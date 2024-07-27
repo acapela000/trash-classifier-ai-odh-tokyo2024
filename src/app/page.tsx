@@ -1,5 +1,6 @@
 import Image from "next/image";
-import DocumentScan from './libs/Document-scan';
+// import DocumentScan from '../actions/Document-scan';
+import { CameraCapture } from './../components/CameraCapture';
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           ></a>
-          <DocumentScan></DocumentScan>
+          <CameraCapture />
         </div>
       </div>
     </main>
