@@ -9,6 +9,7 @@ export function CameraCapture() {
     const [image, setImage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
+    const [predictions, setPredictions] = useState<Prediction[]>([]);
 
     // const captureImage = async () => {
     //     const imageInput = document.querySelector('input[type="file"]') as HTMLInputElement;
@@ -21,6 +22,19 @@ export function CameraCapture() {
     //         reader.readAsDataURL(file);
     //     }
     // }
+
+    // call API with detectObjectApi, pass image as a params and store the result in Prediction, everything will be inside of useEffect
+    useEffect(() => {
+        if (image) {
+            detectObjectApi(image)
+                .then((response: any) => {
+                    setPredictions(response.predictions);
+                })
+                .catch((error: any) => {
+                    console.error(error);
+                });
+        }
+    }, [image]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         // Get the file
@@ -86,71 +100,57 @@ export function CameraCapture() {
                 // Create form data to send file
                 const data = new FormData();
                 data.append('file', file);
-
-                // Upload file and processing bar
-                axios.post('/upload', data, {
-                    onUploadProgress: (progressEvent: any) => {
-                        const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                        setUploadProgress(percentCompleted);
-                    },
-                })
-                    .then((response: any) => {
-                        const predictions = response.data.predictions;
-                        predictions.forEach((prediction: Prediction) => {
-                            console.log(prediction);
-                        });
-                    })
-                    .catch((error: any) => {
-                        console.log(error.message);
-                    })
-                    .finally(() => {
-                        setLoading(false);
-                    });
-
-
-                const canvasRef = useRef<HTMLCanvasElement>(null);
-
-                useEffect(() => {
-                    if (image && canvasRef.current) {
-                        const canvas = canvasRef.current;
-                        const context = canvas.getContext('2d');
-                        if (context) {
-                            const img = new Image();
-                            img.src = image;
-                            img.onload = () => {
-                                context.drawImage(img, 0, 0, canvas.width, canvas.height);
-                                // Assuming `predictions` is the array of Prediction objects
-                                predictions.forEach((prediction: Prediction) => {
-                                    const { top, left, width, height } = prediction.bounding_box;
-                                    context.beginPath();
-                                    context.rect(left, top, width, height);
-                                    context.lineWidth = 2;
-                                    context.strokeStyle = 'red';
-                                    context.stroke();
-                                });
-                            };
-                        }
-                    }
-                }, [image, predictions]);
             };
         }
     };
 
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        if (image && canvasRef.current) {
+            const canvas = canvasRef.current;
+            const context = canvas.getContext('2d');
+
+            if (context) {
+                const img = new Image();
+                img.src = image;
+                img.onload = () => {
+                    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    // Assuming `predictions` is the array of Prediction objects
+                    predictions.forEach((prediction: Prediction) => {
+                        const { top, left, width, height } = prediction.bounding_box;
+                        context.beginPath();
+                        context.rect(left, top, width, height);
+                        context.lineWidth = 10;
+                        context.strokeStyle = 'red';
+                        context.stroke();
+                    });
+                };
+            }
+        }
+    }, [image, predictions]);
+
     return (
         // Modify the input tag to both can upload images from phone's gallery and take a picture from camera
-        <>
+        <div>
             {loading ? (
-                <div>Loading...</div>
+                <div>Loading...</div> // replace this with your loading spinner
             ) : (
                 <>
                     {image && (
                         <img src={image} alt="Captured Image" />
                     )}
-                    <input type="file" alt="Upload picture" accept="image/*" onChange={handleImageChange} />
-                    <progress value={uploadProgress} max="100" />
+                    <input type="file" accept="image/*" onChange={handleImageChange} />
+
+                    {predictions.map((prediction: Prediction, index: number) => (
+                        <div key={index}>
+                            <p>Class: {prediction.class}</p>
+                            <p>Confidence: {prediction.confidence}</p>
+                        </div>
+                    ))}
                 </>
             )}
-        </>
+        </div>
     );
 }
 
