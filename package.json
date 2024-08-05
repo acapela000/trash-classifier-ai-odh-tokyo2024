@@ -12,7 +12,7 @@
     "@internationalized/date": "^3.5.5",
     "@nextui-org/react": "^2.4.6",
     "@react-aria/i18n": "^3.12.1",
-    "axios": "^1.7.2",
+    "axios": "^1.7.3",
     "framer-motion": "^11.3.21",
     "next": "14.2.5",
     "react": "^18",
