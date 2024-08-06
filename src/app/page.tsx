@@ -1,8 +1,12 @@
-import Image from "next/image";
 // import DocumentScan from '../actions/Document-scan';
 import { CameraCapture } from './../components/CameraCapture';
+import { callJpPostApi } from "@/actions/JpPostApi";
+
+
+export const runtime = 'edge';
 
 export default function Home() {
+  callJpPostApi("5320002");
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -14,6 +18,7 @@ export default function Home() {
             rel="noopener noreferrer"
           ></a>
           <CameraCapture />
+
         </div>
       </div>
     </main>

@@ -1,22 +1,22 @@
 import axios from "axios";
 
-const JpPostApi = {
+interface JpPostApi {
   prefs: "",
   cities: "",
   postalcode: "",
-  towns: "",
+  towns: ""
 };
 
-export function callJpPostApi() {
+export function callJpPostApi(postalCode: string) {
   return axios({
     method: "GET",
-    url: "https://postal-codes-jp.azurewebsites.net/index.html",
+    url: `https://postal-codes-jp.azurewebsites.net/api/PostalCodes/${postalCode}`,
     headers: {
       "Content-Type": "application/json",
     },
   })
     .then(function (response) {
-      console.log(response.data);
+      console.log(response.data[0].city.pref);
       return response.data;
     })
     .catch(function (error) {
