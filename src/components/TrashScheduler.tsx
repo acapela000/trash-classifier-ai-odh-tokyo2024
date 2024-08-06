@@ -26,7 +26,7 @@ export default function TrashScheduler() {
     let nextWeek = startOfWeek(now.add({ weeks: 1 }), locale);
     let nextMonth = startOfMonth(now.add({ months: 1 }));
 
-    const CustomRadio = (props) => {
+    const CustomRadio = (props: any) => {
         const { children, ...otherProps } = props;
 
         return (
