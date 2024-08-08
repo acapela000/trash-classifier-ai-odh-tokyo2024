@@ -4,6 +4,10 @@ import React, { useRef, useState } from 'react';
 import { detectObjectApi } from '@/actions/DetectObjectApi';
 import { useEffect } from 'react';
 import { Prediction } from '@/actions/DetectObjectApi';
+import { CameraIcon } from '@heroicons/react/20/solid';
+import { PhotoIcon } from '@heroicons/react/16/solid';
+import { Button } from '@nextui-org/react';
+import FileUploadButton from './FileUploadBtn';
 
 export function CameraCapture() {
     const [image, setImage] = useState<string | null>(null);
@@ -11,17 +15,56 @@ export function CameraCapture() {
     const [uploadProgress, setUploadProgress] = useState(0);
     const [predictions, setPredictions] = useState<Prediction[]>([]);
 
-    // const captureImage = async () => {
-    //     const imageInput = document.querySelector('input[type="file"]') as HTMLInputElement;
-    //     if (imageInput.files && imageInput.files.length > 0) {
-    //         const file = imageInput.files[0];
-    //         const reader = new FileReader();
-    //         reader.onload = (e) => {
-    //             setImage(e.target?.result as string);
-    //         };
-    //         reader.readAsDataURL(file);
-    //     }
-    // }
+    const captureImage = async () => {
+        const imageInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+        if (imageInput.files && imageInput.files.length > 0) {
+            const file = imageInput.files[0];
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setImage(e.target?.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // access camera and capture image from computer's camera
+    const captureFromCamera = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const video = document.createElement('video');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            if (ctx) {
+                video.srcObject = stream;
+                video.onloadedmetadata = () => {
+                    video.play();
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    const image = canvas.toDataURL('image/jpeg');
+                    setImage(image);
+                    video.pause();
+                    video.srcObject = null;
+                    stream.getTracks().forEach((track) => track.stop());
+                };
+            }
+        } catch (error) {
+            console.error('Error accessing camera:', error);
+        }
+    };
+
+    // convert file to <img> tag
+    const fileToImage = (file: File) => {
+        return new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                resolve(e.target?.result as string);
+            };
+            reader.readAsDataURL(file);
+        });
+    };
+
 
     // call API with detectObjectApi, pass image as a params and store the result in Prediction, everything will be inside of useEffect
     useEffect(() => {
@@ -36,7 +79,9 @@ export function CameraCapture() {
         }
     }, [image]);
 
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageChange = React.useCallback((e: any) => {
+        // const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
         // Get the file
         const file = e.target.files && e.target.files[0];
 
@@ -102,7 +147,7 @@ export function CameraCapture() {
                 data.append('file', file);
             };
         }
-    };
+    }, []);
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -137,10 +182,30 @@ export function CameraCapture() {
                 <div>Loading...</div> // replace this with your loading spinner
             ) : (
                 <>
-                    {image && (
-                        <img src={image} alt="Captured Image" />
-                    )}
-                    <input type="file" accept="image/*" onChange={handleImageChange} />
+                    <div className="w-full max-w-sm p-4 mt-8 bg-white rounded-lg shadow-md">
+                        <div className="relative w-full h-48">
+                            <img
+                                src={image ?? "/thumnail-page.png"}
+                                alt="Take Photo"
+                                className={`${image ? "object-scale-down" : "object-cover"} w-full h-full rounded-t-lg`}
+                                width="320"
+                                height="192"
+                                style={{ aspectRatio: "320/192" }}
+                            />
+                        </div>
+                        <div className="p-4">
+                            <h2 className="text-xl font-bold">Take a photo</h2>
+                            <p className="mt-2 text-gray-600">Take a picture of an item to learn how to recycle it.</p>
+                            <div className="flex items-center mt-4 space-x-4">
+                                <button className="flex-1 bg-gray-200" onClick={captureFromCamera} >
+                                    <CameraIcon className="w-6 h-6" />
+                                    {/* <input type="file" accept="image/*" /> */}
+                                </button>
+                                <FileUploadButton accept="image/*" onUpload={(imgs: any) => fileToImage(imgs[0]).then(((i: any) => setImage(i)))} />
+                            </div>
+                            <button className="w-full mt-4 bg-green-500 ">Start</button>
+                        </div>
+                    </div>
 
                     {predictions.map((prediction: Prediction, index: number) => (
                         <div key={index}>

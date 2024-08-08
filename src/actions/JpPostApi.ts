@@ -16,7 +16,7 @@ export function callJpPostApi(postalCode: string) {
     },
   })
     .then(function (response) {
-      console.log(response.data[0].city.pref);
+      //console.log(response.data[0].city.pref);
       return response.data;
     })
     .catch(function (error) {
