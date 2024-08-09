@@ -4,6 +4,7 @@ import { PhotoIcon } from '@heroicons/react/24/solid';
 import { Button, ButtonProps } from '@nextui-org/react';
 import { useCallback, useRef, useState } from 'react';
 // import { useTranslations } from 'next-intl';
+import { CameraIcon } from '@heroicons/react/20/solid';
 
 const FILE_ACCEPT = 'ACCEPT';
 const FILE_REJECT = 'REJECT';
@@ -138,8 +139,8 @@ export default function FileUploadButton({
                         ? acceptProps?.className
                         : acceptance === FILE_REJECT
                             ? rejectProps?.className
-                            : 'border-emeral-300 dark:border-emeral-500 hover:border-emeral-400 dark:hover:border-emeral-400'
-                        } m-2 mx-auto !h-fit w-2/3 items-center justify-center rounded-xs`}
+                            : 'justify-center p-1 text-white bg-green-400 hover:bg-green-600 rounded-md'
+                        } m-2 mx-auto !h-fit w-2/3 items-center justify-center rounded-md`}
                     onPress={onButtonPress}
                     onDragEnter={onDragEnter}
                     onDragOver={onDragOver}
@@ -151,7 +152,7 @@ export default function FileUploadButton({
                         {acceptance === FILE_REJECT ? (
                             <ShieldExclamationIcon width={50} />
                         ) : (
-                            <PhotoIcon width={50} />
+                            <CameraIcon width={50} />
                         )}
                     </div>
                     {/* <div className='text-bold block text-sm opacity-60'>aaaaaaa</div> */}
