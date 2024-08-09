@@ -7,7 +7,7 @@ import { Input, Button } from '@nextui-org/react';
 
 export default function FormInputZipcode() {
     const [zipcode, setZipcode] = useState('');
-    const [apiRes, setApiRes] = useState('');
+    const [apiRes, setApiRes] = useState<any>('');
 
     const handleSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();

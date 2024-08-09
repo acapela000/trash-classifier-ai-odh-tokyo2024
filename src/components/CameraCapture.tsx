@@ -1,12 +1,9 @@
 "use client";
-import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import { detectObjectApi } from "@/actions/DetectObjectApi";
 import { useEffect } from "react";
 import { Prediction } from "@/actions/DetectObjectApi";
 import { CameraIcon } from "@heroicons/react/20/solid";
-import { PhotoIcon } from "@heroicons/react/16/solid";
-import { Button } from "@nextui-org/react";
 import FileUploadButton from "./FileUploadBtn";
 
 export function CameraCapture() {
