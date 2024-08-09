@@ -1,13 +1,13 @@
-"use client"
-import axios from 'axios';
-import React, { useRef, useState } from 'react';
-import { detectObjectApi } from '@/actions/DetectObjectApi';
-import { useEffect } from 'react';
-import { Prediction } from '@/actions/DetectObjectApi';
-import { CameraIcon } from '@heroicons/react/20/solid';
-import { PhotoIcon } from '@heroicons/react/16/solid';
-import { Button } from '@nextui-org/react';
-import FileUploadButton from './FileUploadBtn';
+"use client";
+import axios from "axios";
+import React, { useRef, useState } from "react";
+import { detectObjectApi } from "@/actions/DetectObjectApi";
+import { useEffect } from "react";
+import { Prediction } from "@/actions/DetectObjectApi";
+import { CameraIcon } from "@heroicons/react/20/solid";
+import { PhotoIcon } from "@heroicons/react/16/solid";
+import { Button } from "@nextui-org/react";
+import FileUploadButton from "./FileUploadBtn";
 
 export function CameraCapture() {
     const [image, setImage] = useState<string | null>(null);
@@ -16,7 +16,9 @@ export function CameraCapture() {
     const [predictions, setPredictions] = useState<Prediction[]>([]);
 
     const captureImage = async () => {
-        const imageInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+        const imageInput = document.querySelector(
+            'input[type="file"]'
+        ) as HTMLInputElement;
         if (imageInput.files && imageInput.files.length > 0) {
             const file = imageInput.files[0];
             const reader = new FileReader();
@@ -25,15 +27,15 @@ export function CameraCapture() {
             };
             reader.readAsDataURL(file);
         }
-    }
+    };
 
     // access camera and capture image from computer's camera
     const captureFromCamera = async () => {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-            const video = document.createElement('video');
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
+            const video = document.createElement("video");
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
 
             if (ctx) {
                 video.srcObject = stream;
@@ -42,7 +44,7 @@ export function CameraCapture() {
                     canvas.width = video.videoWidth;
                     canvas.height = video.videoHeight;
                     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                    const image = canvas.toDataURL('image/jpeg');
+                    const image = canvas.toDataURL("image/jpeg");
                     setImage(image);
                     video.pause();
                     video.srcObject = null;
@@ -50,7 +52,7 @@ export function CameraCapture() {
                 };
             }
         } catch (error) {
-            console.error('Error accessing camera:', error);
+            console.error("Error accessing camera:", error);
         }
     };
 
@@ -64,7 +66,6 @@ export function CameraCapture() {
             reader.readAsDataURL(file);
         });
     };
-
 
     // call API with detectObjectApi, pass image as a params and store the result in Prediction, everything will be inside of useEffect
     useEffect(() => {
@@ -88,17 +89,17 @@ export function CameraCapture() {
         if (file) {
             setLoading(true);
             // Validate file type
-            const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+            const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
             if (!validImageTypes.includes(file.type)) {
-                alert('Invalid file type. Please select a gif, jpeg, or png file.');
+                alert("Invalid file type. Please select a gif, jpeg, or png file.");
                 return;
             }
 
             // Validate file size (less than 10MB)
             const maxSize = 10 * 1024 * 1024; // 10MB
             if (file.size > maxSize) {
-                alert('File size is too large. Please select a file less than 2MB.');
+                alert("File size is too large. Please select a file less than 2MB.");
                 return;
             }
 
@@ -111,7 +112,7 @@ export function CameraCapture() {
             reader.readAsDataURL(file);
 
             image.onload = () => {
-                const canvas = document.createElement('canvas');
+                const canvas = document.createElement("canvas");
                 const maxSize = 500;
                 let width = image.width;
                 let height = image.height;
@@ -130,9 +131,9 @@ export function CameraCapture() {
 
                 canvas.width = width;
                 canvas.height = height;
-                const ctx = canvas.getContext('2d');
+                const ctx = canvas.getContext("2d");
                 ctx!.drawImage(image, 0, 0, width, height);
-                const newImage = canvas.toDataURL('image/jpeg', 0.8);
+                const newImage = canvas.toDataURL("image/jpeg", 0.8);
                 setImage(newImage);
                 setLoading(false);
                 // // Read the file
@@ -144,7 +145,7 @@ export function CameraCapture() {
 
                 // Create form data to send file
                 const data = new FormData();
-                data.append('file', file);
+                data.append("file", file);
             };
         }
     }, []);
@@ -154,7 +155,7 @@ export function CameraCapture() {
     useEffect(() => {
         if (image && canvasRef.current) {
             const canvas = canvasRef.current;
-            const context = canvas.getContext('2d');
+            const context = canvas.getContext("2d");
 
             if (context) {
                 const img = new Image();
@@ -167,13 +168,15 @@ export function CameraCapture() {
                         context.beginPath();
                         context.rect(left, top, width, height);
                         context.lineWidth = 10;
-                        context.strokeStyle = 'red';
+                        context.strokeStyle = "red";
                         context.stroke();
                     });
                 };
             }
         }
     }, [image, predictions]);
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     return (
         // Modify the input tag to both can upload images from phone's gallery and take a picture from camera
@@ -182,28 +185,43 @@ export function CameraCapture() {
                 <div>Loading...</div> // replace this with your loading spinner
             ) : (
                 <>
-                    <div className="w-full max-w-sm p-4 mt-8 bg-white rounded-lg shadow-md">
+                    <div className="w-full max-w-sm md:p-4 mt-8 bg-white rounded-lg shadow-md">
                         <div className="relative w-full h-48">
                             <img
                                 src={image ?? "/thumnail-page.png"}
                                 alt="Take Photo"
-                                className={`${image ? "object-scale-down" : "object-cover"} w-full h-full rounded-t-lg`}
+                                className={`${image ? "object-scale-down" : "object-cover"
+                                    } w-full h-full rounded-t-lg`}
                                 width="320"
                                 height="192"
                                 style={{ aspectRatio: "320/192" }}
                             />
                         </div>
-                        <div className="p-4">
+                        <div className="md:p-4">
                             <h2 className="text-xl font-bold">Take a photo</h2>
-                            <p className="mt-2 text-gray-600">Take a picture of an item to learn how to recycle it.</p>
+                            <p className="mt-2 text-gray-600">
+                                Take a picture of an item to learn how to recycle it.
+                            </p>
                             <div className="flex items-center mt-4 space-x-4">
-                                <button className="flex-1 bg-gray-200" onClick={captureFromCamera} >
-                                    <CameraIcon className="w-6 h-6" />
-                                    {/* <input type="file" accept="image/*" /> */}
-                                </button>
-                                <FileUploadButton accept="image/*" onUpload={(imgs: any) => fileToImage(imgs[0]).then(((i: any) => setImage(i)))} />
+                                {!isMobile && (
+                                    <><button
+                                        className="justify-center p-2 text-white bg-green-400 hover:bg-green-600 rounded-md"
+                                        onClick={captureFromCamera}
+                                    >
+                                        <CameraIcon className="w-12 h-12" />
+                                    </button><FileUploadButton
+                                            className="bg-green-400 hover:bg-green-600"
+                                            accept="image/*"
+                                            onUpload={(imgs: any) => fileToImage(imgs[0]).then((i: any) => setImage(i))} /></>)
+                                }
+                                {isMobile && (
+                                    <FileUploadButton
+                                        className="flex justify-center bg-green-400 hover:bg-green-600"
+                                        accept="image/*"
+                                        onUpload={(imgs: any) => fileToImage(imgs[0]).then((i: any) => setImage(i))}
+                                    />
+                                )}
                             </div>
-                            <button className="w-full mt-4 bg-green-500 ">Start</button>
                         </div>
                     </div>
 
