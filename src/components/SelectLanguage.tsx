@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 
 
@@ -30,7 +30,7 @@ export default function SelectLanguage() {
                     disallowEmptySelection
                     selectionMode="single"
                     selectedKeys={selectedKeys}
-                    onSelectionChange={setSelectedKeys}
+                // onSelectionChange={setSelectedKeys}
                 >
                     <DropdownItem className="hover:bg-emerald-200" key="en">English</DropdownItem>
                     <DropdownItem key="jp">Japanese</DropdownItem>
