@@ -1,11 +1,11 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { callJpPostApi } from '@/actions/JpPostApi';
 import { ArrowUpIcon } from '@heroicons/react/20/solid';
 import { Input, Button } from '@nextui-org/react';
 
 
-export default function FormInputZipcode() {
+export default function FormInputZipcode({ cf }: any) {
     const [zipcode, setZipcode] = useState('');
     const [apiRes, setApiRes] = useState<any>('');
 
@@ -31,18 +31,28 @@ export default function FormInputZipcode() {
                 />
                 <Button
                     color="success"
-                    className="text-white color-bg-green-400 hover:bg-green-600 rounded-md"
-                //className="justify-center p-2 text-white bg-green-400 hover:bg-green-600 rounded-md" type="submit"
+                    // className="text-white color-bg-green-400 hover:bg-green-600 rounded-md"
+                    className="justify-center p-2 text-white bg-green-400 hover:bg-green-600 rounded-md" type="submit"
                 >
                     <ArrowUpIcon className="w-4 h-4" />
                 </Button>
             </div>
             {apiRes && (
                 <div>
+                    {cf.country}
+                    {cf.city}
+                    {cf.region}
+                    {cf.timezone}
+                    {cf.postalCode}
+                    {cf.latitude}
+                    {cf.longitude}
+                    {cf.metroCode}
+                    {cf.continent}
+                    {cf.regionCode}
                     <p>Postal Code: {apiRes.postalCode}</p>
                     <p>Prefecture: {apiRes.city.pref.name}, {apiRes.city.pref.kana}</p>
                     <p>City-Disrtrict: {apiRes.city.name},{apiRes.city.kana} </p>
-                    {/* <p>Town: {apiRes.town.name}, {apiRes.town.kana}</p> */}
+                    <p>Town: {apiRes.name}, {apiRes.kana}</p>
                 </div>
             )}
         </form>

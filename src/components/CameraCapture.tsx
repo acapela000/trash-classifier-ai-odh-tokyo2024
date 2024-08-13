@@ -206,22 +206,16 @@ export function CameraCapture() {
                                         onClick={captureFromCamera}
                                     >
                                         <CameraIcon className="w-12 h-12" />
-                                    </button><FileUploadButton
-                                            className="bg-green-400 hover:bg-green-600"
-                                            accept="image/*"
-                                            onUpload={(imgs: any) => fileToImage(imgs[0]).then((i: any) => setImage(i))} /></>)
+                                    </button></>)
                                 }
-                                {isMobile && (
-                                    <FileUploadButton
-                                        className="flex justify-center bg-green-400 hover:bg-green-600"
-                                        accept="image/*"
-                                        onUpload={(imgs: any) => fileToImage(imgs[0]).then((i: any) => setImage(i))}
-                                    />
-                                )}
+                                <FileUploadButton
+                                    className={`${!isMobile ? "flex justify-center" : ""} bg-green-400 hover:bg-green-600`}
+                                    accept="image/*"
+                                    onUpload={(imgs: any) => fileToImage(imgs[0]).then((i: any) => setImage(i))}
+                                />
                             </div>
                         </div>
                     </div>
-
                     {predictions.map((prediction: Prediction, index: number) => (
                         <div key={index}>
                             <p>Class: {prediction.class}</p>
