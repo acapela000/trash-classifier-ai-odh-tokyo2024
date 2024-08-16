@@ -5,9 +5,12 @@ import { useEffect } from "react";
 import { Prediction } from "@/actions/DetectObjectApi";
 import { CameraIcon } from "@heroicons/react/20/solid";
 import FileUploadButton from "./FileUploadBtn";
+import ClassifierModels from "./ClassifierModels";
 
+type Props = {
+}
 
-export function CameraCapture() {
+export function CameraCapture(props: Props) {
     const [image, setImage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const [predictions, setPredictions] = useState<Prediction[]>([]);
@@ -50,18 +53,25 @@ export function CameraCapture() {
         });
     };
 
+    // convert file to canvas
+    const srcToImage = (src: string) => {
+        const img = new Image();
+        img.src = src;
+        return img;
+    };
+
     // call API with detectObjectApi, pass image as a params and store the result in Prediction, everything will be inside of useEffect
-    useEffect(() => {
-        if (image) {
-            detectObjectApi(image)
-                .then((response: any) => {
-                    setPredictions(response.predictions);
-                })
-                .catch((error: any) => {
-                    console.error(error);
-                });
-        }
-    }, [image]);
+    // useEffect(() => {
+    //     if (image) {
+    //         detectObjectApi(image)
+    //             .then((response: any) => {
+    //                 setPredictions(response.predictions);
+    //             })
+    //             .catch((error: any) => {
+    //                 console.error(error);
+    //             });
+    //     }
+    // }, [image]);
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -106,12 +116,21 @@ export function CameraCapture() {
                             </div>
                         </div>
                     </div>
+                    <p>
+
+                    </p>
+
                     {predictions.map((prediction: Prediction, index: number) => (
                         <div key={index}>
                             <p>Class: {prediction.class}</p>
                             <p>Confidence: {prediction.confidence}</p>
                         </div>
                     ))}
+
+                    <p>
+                        Prediction Result
+                    </p>
+                    {image && <ClassifierModels img={srcToImage(image)} />}
                 </>
             )}
         </div>
