@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 });
 
 export default function MapComponent({ lat, long }: { lat: any, long: any }): any {
-    const center = [lat, long];
+    const center: [number, number] = [lat, long];
 
     return (
         <>
