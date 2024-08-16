@@ -1,15 +1,13 @@
 import FormInputZipcode from '@/components/FormInputZipcode';
-import { CameraCapture } from './../components/CameraCapture';
-
+import { CameraCapture } from '@/components/CameraCapture';
 
 import { getRequestContext } from '@cloudflare/next-on-pages';
 
-
 export const runtime = 'edge';
 
-export default function Home() {
+export default async function Home() {
 
-  // const { cf } = getRequestContext();
+  const { cf } = getRequestContext();
 
   return (
     <main className="flex flex-col items-center w-full min-h-screen bg-gray-100">
@@ -17,7 +15,7 @@ export default function Home() {
 
       <div className="flex min-h-screen flex-col items-center justify-between p-8 md:p-24">
         <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-          <FormInputZipcode />
+          <FormInputZipcode cf={cf} />
           <CameraCapture />
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
 
-        <header className="w-full bg-white shadow-xs shadow-emerald-100 rounded-large fixed bottom-0 lef-0 right-0 z-99">
+        <header className="w-full bg-white shadow-xs shadow-emerald-100 rounded-large fixed bottom-0 lef-0 right-0 z-50">
           <div className="container flex justify-evenly py-1 ">
             <Link href="/" className="flex flex-col items-center text-green-500" prefetch={false}>
               <HomeIcon className="w-8 h-8 text-green-500 hover:text-green-300" />
