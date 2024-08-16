@@ -16,7 +16,7 @@ L.Icon.Default.mergeOptions({
     shadowUrl: markerShadow.src,
 });
 
-export default function MapComponent({ lat, long }: { lat: number, long: number }): any {
+export default function MapComponent({ lat, long }: { lat: any, long: any }): any {
     const center = [lat, long];
 
     return (
