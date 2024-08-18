@@ -29,7 +29,6 @@ export default function MapComponent({ lat, long }: { lat: any, long: any }): an
                 </Marker>
                 <TileLayer
                     url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
-
                 />
             </MapContainer>
         </>
