@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { detectObjectApi } from "@/actions/DetectObjectApi";
 import { useEffect } from "react";
 import { Prediction } from "@/actions/DetectObjectApi";
-import { CameraIcon } from "@heroicons/react/20/solid";
+import { CameraIcon, FolderOpenIcon } from "@heroicons/react/20/solid";
 import FileUploadButton from "./FileUploadBtn";
 import ClassifierModels from "./ClassifierModels";
 
@@ -53,13 +53,6 @@ export function CameraCapture(props: Props) {
         });
     };
 
-    // convert file to canvas
-    const srcToImage = (src: string) => {
-        const img = new Image();
-        img.src = src;
-        return img;
-    };
-
     // call API with detectObjectApi, pass image as a params and store the result in Prediction, everything will be inside of useEffect
     // useEffect(() => {
     //     if (image) {
@@ -94,23 +87,24 @@ export function CameraCapture(props: Props) {
                                 style={{ aspectRatio: "320/192" }}
                             />
                         </div>
-                        <div className="md:p-4">
+                        <div className="md:p-4 p-2">
                             <h2 className="text-xl font-bold">Take a photo</h2>
                             <p className="mt-2 text-gray-600">
                                 Take a picture of an item to learn how to recycle it.
                             </p>
-                            <div className="flex items-center mt-4 space-x-4">
+                            <div className="flex items-center justify-center mt-4 space-x-4">
                                 {!isMobile && (
                                     <><button
                                         className="justify-center p-2 text-white bg-green-400 hover:bg-green-600 rounded-md"
                                         onClick={captureFromCamera}
                                     >
-                                        <CameraIcon className="w-12 h-12" />
+                                        <CameraIcon className="w-[50px] h-[50px]" />
                                     </button></>)
                                 }
                                 <FileUploadButton
-                                    className={`${!isMobile ? "flex justify-center" : ""} bg-green-400 hover:bg-green-600`}
+                                    className={`${!isMobile ? "flex justify-center" : ""} bg-green-300 hover:bg-green-500`}
                                     accept="image/*"
+                                    isMobile={isMobile}
                                     onUpload={(imgs: any) => fileToImage(imgs[0]).then((i: any) => setImage(i))}
                                 />
                             </div>
@@ -127,10 +121,7 @@ export function CameraCapture(props: Props) {
                         </div>
                     ))}
 
-                    <p>
-                        Prediction Result
-                    </p>
-                    {image && <ClassifierModels img={srcToImage(image)} />}
+                    {image && <ClassifierModels imgSrc={image} />}
                 </>
             )}
         </div>
