@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
-import { i18n } from '@components/i18n';
+// import { i18n } from '@components/i18n';
 
 export default function SelectLanguage() {
     const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Select Languages"]));
@@ -37,7 +37,6 @@ export default function SelectLanguage() {
                     disallowEmptySelection
                     selectionMode="single"
                     selectedKeys={selectedKeys}
-                    onSelectionChange={setSelectedKeys}
                 >
 
                     <DropdownItem onClick={() => i18n.changeLanguage('en')} className="hover:bg-emerald-200 duration-200" key="English">English</DropdownItem>
