@@ -1,10 +1,10 @@
 'use client';
-import { ShieldExclamationIcon } from '@heroicons/react/24/outline';
+import { ShieldExclamationIcon, ArrowUpCircleIcon } from '@heroicons/react/24/outline';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 import { Button, ButtonProps } from '@nextui-org/react';
-import { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 // import { useTranslations } from 'next-intl';
-import { CameraIcon } from '@heroicons/react/20/solid';
+import { CameraIcon, FolderOpenIcon } from '@heroicons/react/20/solid';
 
 const FILE_ACCEPT = 'ACCEPT';
 const FILE_REJECT = 'REJECT';
@@ -56,6 +56,7 @@ export default function FileUploadButton({
     multiple = false,
     classNames,
     className,
+    isMobile,
     ...props
 }: ButtonProps & {
     classNames?: { wrapper?: string; button?: string };
@@ -64,6 +65,7 @@ export default function FileUploadButton({
     rejectProps?: ButtonProps;
     accept?: string;
     multiple?: boolean;
+    isMobile: boolean;
 }) {
 
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -139,8 +141,8 @@ export default function FileUploadButton({
                         ? acceptProps?.className
                         : acceptance === FILE_REJECT
                             ? rejectProps?.className
-                            : 'justify-center p-1 text-white bg-green-400 hover:bg-green-600 rounded-md'
-                        } m-2 mx-auto !h-fit w-2/3 items-center justify-center rounded-md`}
+                            : 'justify-center py-1 text-white bg-green-400 hover:bg-green-600 rounded-md'
+                        }  mx-auto !h-fit w-2/3 items-center justify-center rounded-md`}
                     onPress={onButtonPress}
                     onDragEnter={onDragEnter}
                     onDragOver={onDragOver}
@@ -152,7 +154,7 @@ export default function FileUploadButton({
                         {acceptance === FILE_REJECT ? (
                             <ShieldExclamationIcon width={50} />
                         ) : (
-                            <CameraIcon width={50} />
+                            isMobile ? <CameraIcon width={50} /> : <FolderOpenIcon className="w-[50px] h-[50px]" />
                         )}
                     </div>
                     {/* <div className='text-bold block text-sm opacity-60'>aaaaaaa</div> */}
