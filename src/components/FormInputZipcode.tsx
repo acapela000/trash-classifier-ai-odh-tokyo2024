@@ -4,19 +4,24 @@ import { callJpPostApi } from '@/actions/JpPostApi';
 import { ArrowUpIcon } from '@heroicons/react/20/solid';
 import { Input, Button } from '@nextui-org/react';
 
+interface Props {
+    cf: any,
+    setLocation: any,
+    location: { latitude: number, longitude: number },
+}
 
-
-export default function FormInputZipcode({ cf }: any) {
+export default function FormInputZipcode({ cf, setLocation, location }: Props) {
     const [zipcode, setZipcode] = useState((cf.postalCode as string).replace('-', ''));
     const [apiRes, setApiRes] = useState<any>('');
-    const [location, setLocation] = useState<any>('');
+    // const [location, setLocation] = useState<any>('');
+    // const [location, setLocation] = useState<{ latitude: number, longitude: number }>({ latitude: 0, longitude: 0 });
 
     useEffect(() => {
         if ('geolocation' in navigator) {
             // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
             navigator.geolocation.getCurrentPosition(({ coords }) => {
-                const { latitude, longitude } = coords;
-                setLocation({ latitude, longitude });
+                const { latitude, longitude } = coords
+                setLocation({ latitude: latitude, longitude: longitude });
 
                 // convert the latitude and longitude coordinates into a zip code using a geocoding service like Nominatim (which uses OpenStreetMap data)
                 const geocodeUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
@@ -25,7 +30,7 @@ export default function FormInputZipcode({ cf }: any) {
                     .then((data) => {
                         const { address } = data;
                         if (address.postcode) {
-                            setZipcode(address.postcode);
+                            setZipcode((address.postcode as string).replace('-', ''));
                         }
                     })
                     .catch((error) => {
@@ -68,13 +73,20 @@ export default function FormInputZipcode({ cf }: any) {
         console.log(res)
         setApiRes(res[0]);
 
+        // TODO: Extract latitude and longitude from the response
+        // Current api from JP Post doesnt return the lat and long
+        // const newLatitude = res[0].latitude;
+        // const newLongitude = res[0].longitude;
+
+        // setLocation({ latitude: newLatitude, longitude: newLongitude });
     };
+
 
     return (
         <>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <label>郵便番号</label>
-                <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+                <label>Input your current location to get nearest trash disposal place/trash bin</label>
+                <div className="flex w-full mb-6 gap-4">
                     <Input
                         type="text"
                         isInvalid={zipcode.length !== 7}
@@ -115,8 +127,8 @@ export default function FormInputZipcode({ cf }: any) {
             <div>
                 {location && (
                     <div>
-                        <p>Latitude: {location.latitude}</p>
-                        <p>Longitude: {location.longitude}</p>
+                        {/* <p>Latitude: {location.latitude}</p>
+                        <p>Longitude: {location.latitude}</p> */}
                         {/* <p>
                             <a
                                 href={`https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`}
