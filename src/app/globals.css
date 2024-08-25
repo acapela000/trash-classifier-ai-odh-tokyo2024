@@ -27,3 +27,13 @@
   -o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
   transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
 }
+
+@layer base {
+  html {
+    @apply bg-gradient-to-t from-emerald-100 to-teal-100 transition-all duration-300;
+  }
+}
+
+body {
+  font-family: 'Onest Variable', sans-serif;
+}

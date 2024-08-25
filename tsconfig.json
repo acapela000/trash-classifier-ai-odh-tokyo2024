@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/actions/Document-scan.tsx", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/actions/JpPostApi.ts", "src/components/SelectLanguage.tsx"],
+  "include": ["src/actions/Document-scan.tsx", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".js", ".jsx"],
   "exclude": ["node_modules"]
 }
