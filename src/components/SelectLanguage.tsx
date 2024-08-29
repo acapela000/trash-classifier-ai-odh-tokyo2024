@@ -1,33 +1,23 @@
 'use client'
 import React, { useState } from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-import { useTranslation } from 'react-i18next';
-import { useRouter } from 'next/navigation';
-// import { i18n } from '@components/i18n';
+import { useTranslations } from 'next-intl';
+
 
 export default function SelectLanguage() {
-    const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Select Languages"]));
-
-    const selectedValue = React.useMemo(
-        () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-        [selectedKeys]
-    );
-
-    // add i18n
-    const { t, i18n } = useTranslation();
-    const router = useRouter();
-
+    const m = useTranslations('Metadata');
 
     return (
         <div className="flex flex-col items-center justify-center">
             <h3 className="text-2xl font-bold text-center">Language</h3>
+            {m('home')}
             <Dropdown>
                 <DropdownTrigger>
                     <Button
                         variant="bordered"
                         className="capitalize w-48 hover:bg-emerald-200 border-emerald-500"
                     >
-                        {selectedValue}
+                        {m('language')} <span className="ml-2">🌐</span>
                     </Button>
                 </DropdownTrigger>
                 <DropdownMenu
@@ -36,24 +26,24 @@ export default function SelectLanguage() {
                     variant="flat"
                     disallowEmptySelection
                     selectionMode="single"
-                    selectedKeys={selectedKeys}
-                >
+                    className="w-48"
 
-                    <DropdownItem onClick={() => i18n.changeLanguage('en')} className="hover:bg-emerald-200 duration-200" key="English">English</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('ja')} key="Japanese">Japan</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('ko')} key="Korean">Korea</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('zh')} key="Chinese">China</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('vi')} key="Vietnamese">Vietnam</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('id')} key="Bahasa">Indonesia</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('ne')} key="Nepali">Nepal</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('tl')} key="Tagalog">Philippines</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('hi')} key="Hindi">India</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('es')} key="Spanish">Spain</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('de')} key="Deutsch">Germany</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('fr')} key="French">France</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('it')} key="Italian">Italy</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('pt')} key="Potugese">Potugal</DropdownItem>
-                    <DropdownItem onClick={() => i18n.changeLanguage('ru')} key="Russia">Russia</DropdownItem>
+                >
+                    <DropdownItem value="en">English</DropdownItem>
+                    <DropdownItem value="de">Deutsch</DropdownItem>
+                    <DropdownItem value="es">Español</DropdownItem>
+                    <DropdownItem value="fr">Français</DropdownItem>
+                    <DropdownItem value="it">Italiano</DropdownItem>
+                    <DropdownItem value="ja">日本語</DropdownItem>
+                    <DropdownItem value="ko">한국어</DropdownItem>
+                    <DropdownItem value="pt">Português</DropdownItem>
+                    <DropdownItem value="ru">Русский</DropdownItem>
+                    <DropdownItem value="zh">中文</DropdownItem>
+                    <DropdownItem value="vi">Tiếng Việt</DropdownItem>
+                    <DropdownItem value="id">Bahasa Indonesia</DropdownItem>
+                    <DropdownItem value="ne">नेपाली</DropdownItem>
+                    <DropdownItem value="tl">Tagalog</DropdownItem>
+                    <DropdownItem value="hi">हिन्दी</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
         </div>
