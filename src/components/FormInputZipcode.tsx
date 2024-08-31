@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { callJpPostApi } from '@/actions/JpPostApi';
 import { ArrowUpIcon } from '@heroicons/react/20/solid';
 import { Input, Button } from '@nextui-org/react';
+import { useTranslations } from 'next-intl';
 
 interface Props {
     cf: any,
@@ -81,11 +82,12 @@ export default function FormInputZipcode({ cf, setLocation, location }: Props) {
         // setLocation({ latitude: newLatitude, longitude: newLongitude });
     };
 
+    const f = useTranslations('FormInputZipcode');
 
     return (
         <>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <label>Input your current location to get nearest trash disposal place/trash bin</label>
+                <label>{f('label')}</label>
                 <div className="flex w-full mb-6 gap-4">
                     <Input
                         type="text"
@@ -118,10 +120,10 @@ export default function FormInputZipcode({ cf, setLocation, location }: Props) {
             {apiRes && (
                 <div>
 
-                    <p>Postal Code: {apiRes.postalCode}</p>
-                    <p>Prefecture: {apiRes.city.pref.name}, {apiRes.city.pref.kana}</p>
-                    <p>City-Disrtrict: {apiRes.city.name},{apiRes.city.kana} </p>
-                    <p>Town: {apiRes.name}, {apiRes.kana}</p>
+                    <p>{f('postalCode')}: {apiRes.postalCode}</p>
+                    <p>{f('pref')}: {apiRes.city.pref.name}, {apiRes.city.pref.kana}</p>
+                    <p>{f('city-district')}: {apiRes.city.name},{apiRes.city.kana} </p>
+                    <p>{f('town')}: {apiRes.name}, {apiRes.kana}</p>
                 </div>
             )}
             <div>

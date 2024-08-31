@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import * as tmImage from '@teachablemachine/image';
 import { CircularProgress, Spinner } from '@nextui-org/react';
+import { useTranslations } from "next-intl";
 
 
 type Props = {
@@ -41,9 +42,11 @@ export default function ClassifierModels(props: Props) {
         }
     }, [props.imgSrc, model]);
 
+    const cm = useTranslations('ClassifierModels');
+
     return (
         <section className="w-full bg-white p-2 rounded-lg shadow-md mt-4">
-            <h3 className="text-xl font-bold">Prediction Result</h3>
+            <h3 className="text-xl font-bold">{cm('classifier')}</h3>
             <section className="mt-4 grid grid-cols-3 gap-3 items-center justify-center">
                 {prediction ? (
                     prediction.map((key: any, i: any) => (
@@ -59,14 +62,14 @@ export default function ClassifierModels(props: Props) {
                                 color={
                                     (() => {
                                         switch (key.className) {
-                                            case 'Can':
+                                            case cm('type1'):
                                                 return 'warning';
-                                            case 'Carton':
-                                            case 'Paper':
-                                            case 'Petbottle':
+                                            case cm('type2-1'):
+                                            case cm('type2-2'):
+                                            case cm('type3'):
                                                 return 'success';
-                                            case 'Glass':
-                                            case 'Plastic':
+                                            case cm('type4'):
+                                            case cm('type5'):
                                                 return 'danger';
                                             // case 'Raw trash':
                                             //     return 'primary';

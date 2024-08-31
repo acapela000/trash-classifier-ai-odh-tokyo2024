@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 
 interface Hint {
@@ -12,13 +13,14 @@ export default function RecyclingHints({ hints }: { hints: Hint[] }) {
 
     const displayedHints = showAll ? hints : hints.slice(0, 3);
 
+    const r = useTranslations('RecyclingHints');
     // Example usage with dummy data
     const exampleHints: Hint[] = [
-        { id: "1", text: "Rinse plastic bottles before recycling." },
-        { id: "2", text: "Flatten cardboard boxes to save space." },
-        { id: "3", text: "Remove caps from bottles before recycling." },
-        { id: "4", text: "Separate different materials into appropriate bins." },
-        { id: "5", text: "Avoid recycling greasy food containers." },
+        { id: "1", text: r('hint1') },
+        { id: "2", text: r('hint2') },
+        { id: "3", text: r('hint3') },
+        { id: "4", text: r('hint4') },
+        { id: "5", text: r('hint5') },
     ];
 
     const App: React.FC = () => (
@@ -29,10 +31,11 @@ export default function RecyclingHints({ hints }: { hints: Hint[] }) {
         </div>
     );
 
+
     // use the dummy data to show the hints
     return (
         <div className="flex flex-col w-full max-w-4xl">
-            <h2 className="text-2xl font-bold">Recycling Hints</h2>
+            <h2 className="text-2xl font-bold">{r('recyclingHints')}</h2>
             <ul className="list-disc pl-8">
                 {displayedHints.map((hint) => (
                     <li key={hint.id} className="text-lg">

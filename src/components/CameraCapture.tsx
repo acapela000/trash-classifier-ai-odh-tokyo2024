@@ -6,6 +6,7 @@ import { Prediction } from "@/actions/DetectObjectApi";
 import { CameraIcon, FolderOpenIcon } from "@heroicons/react/20/solid";
 import FileUploadButton from "./FileUploadBtn";
 import ClassifierModels from "./ClassifierModels";
+import { useTranslations } from "next-intl";
 
 type Props = {
 }
@@ -14,6 +15,7 @@ export function CameraCapture(props: Props) {
     const [image, setImage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const [predictions, setPredictions] = useState<Prediction[]>([]);
+    const c = useTranslations('CameraCapture');
 
     // access camera and capture image from computer's camera
     const captureFromCamera = async () => {
@@ -88,9 +90,9 @@ export function CameraCapture(props: Props) {
                             />
                         </div>
                         <div className="md:p-4 p-2">
-                            <h2 className="text-xl font-bold">Take a photo</h2>
+                            <h2 className="text-xl font-bold">{c('take-upload')}</h2>
                             <p className="mt-2 text-gray-600">
-                                Take a picture of an item to learn how to recycle it.
+                                {c('takePhoto')}
                             </p>
                             <div className="flex items-center justify-center mt-4 space-x-4">
                                 {!isMobile && (
