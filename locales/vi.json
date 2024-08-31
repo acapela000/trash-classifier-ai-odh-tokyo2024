@@ -1,0 +1,40 @@
+{
+  "Events": {
+    "event": "Sự kiện",
+    "eventContent": "Các sự kiện về tái chế, giảm thiểu hiệu ứng nhà kính, bảo vệ môi trường...",
+    "event1": "Các dự án bền vững qua Tokyo Marathon 2024",
+    "event2": "Chợ Tái chế miễn phí mùa xuân 2024 tổ chức tại Kashiwa Campus",
+    "event3": "Triển lãm Bảo trì / Khả năng phục hồi TOKYO2024 - Xử lý chất thải tái chế / Xây dựng - Tokyo Big Sight",
+    "event4": "Tình nguyện viên liên quan đến việc nhặt rác tại Tokyo",
+    "event5": "Bảo vệ môi trường - Các hoạt động khác nhau",
+    "event-more": "Các sự kiện khác...",
+    "qa": "Bạn có thể đặt câu hỏi và nhận câu trả lời tại đây",
+    "help-feedback": "Hỗ trợ & Góp ý",
+    "help-feedback-content": "Bạn có thể nhận sự trợ giúp và cung cấp phản hồi để cải thiện ứng dụng web tốt hơn"
+  },
+  "CameraCapture": {
+    "takePhoto": "Chụp ảnh một món rác để phân loại nó.",
+    "take-upload": "Chụp hoặc tải ảnh lên"
+  },
+  "NavBar": {
+    "home": "Trang chủ",
+    "calendar": "Lịch vứt rác",
+    "map": "Bản đồ nơi có thùng rác",
+    "setting": "Cài đặt"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Gợi ý tái chế",
+    "hint1": "Rửa sạch chai nhựa trước khi tái chế.",
+    "hint2": "Ép phẳng các hộp bìa cứng để tiết kiệm không gian.",
+    "hint3": "Tháo nắp ra khỏi chai trước khi tái chế.",
+    "hint4": "Phân loại các vật liệu khác nhau vào các thùng phù hợp.",
+    "hint5": "Tránh tái chế các hộp đựng thức ăn dính dầu mỡ."
+  },
+  "FormInputZipcode": {
+    "label": "Nhập vị trí hiện tại của bạn để tìm nơi/thùng rác gần nhất",
+    "postalCode": "Mã bưu điện",
+    "pref": "Tỉnh/Thành phố",
+    "city-district": "Quận/Huyện",
+    "town": "Thị trấn"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "Events",
+    "eventContent": "Any event about recycling, global warming reduction, environmental protection...",
+    "event1": "Sustainable Projects through Tokyo Marathon 2024",
+    "event2": "Free Recycling Bazaar 2024 Spring held at Kashiwa Campus",
+    "event3": "Maintenance / Resilience TOKYO2024 - Recycling / Construction Waste Treatment Exhibition - Tokyo Big Sight",
+    "event4": "Volunteer activities related to trash picking in Tokyo",
+    "event5": "Protect environment - Various activities",
+    "event-more": "For more events",
+    "qa": "You can ask questions and get answers here",
+    "help-feedback": "Help & Feedback",
+    "help-feedback-content": "You can get help and provide feedback to improve the web app"
+  },
+  "CameraCapture": {
+    "takePhoto": "Take a picture of a piece of trash to have it classified.",
+    "take-upload": "Take/Upload a photo."
+  },
+  "NavBar": {
+    "home": "Home",
+    "calendar": "Calendar",
+    "map": "Trash bin map",
+    "setting": "Setting"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Recycling Hints",
+    "hint1": "Rinse plastic bottles before recycling.",
+    "hint2": "Flatten cardboard boxes to save space.",
+    "hint3": "Remove caps from bottles before recycling.",
+    "hint4": "Separate different materials into appropriate bins.",
+    "hint5": "Avoid recycling greasy food containers."
+  },
+  "ClassifierModels": {
+    "classifier": "Prediction Result: This trash can be classified as",
+    "type1": "Can",
+    "type2-1": "Carton",
+    "type2-2": "Paper",
+    "type3": "Petbottle",
+    "type4": "Glass",
+    "type5": "Plastic"
+  },
+  "FormInputZipcode": {
+    "label": "Input your current location to get nearest trash disposal place/trash bin",
+    "postalCode": "Postal Code",
+    "pref": "Prefecture",
+    "city-district": "City-Disrtrict",
+    "town": "Town"
+  }
+}

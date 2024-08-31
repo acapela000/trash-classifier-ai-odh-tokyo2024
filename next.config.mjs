@@ -1,12 +1,6 @@
 // we import the utility from the next-dev submodule
 import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
-
-const createNextIntlPlugin = require("next-intl/plugin");
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-export default nextConfig;
-const withNextIntl = createNextIntlPlugin();
+import createNextIntlPlugin from "next-intl/plugin";
 
 // we only need to use the utility during development so we can check NODE_ENV
 // (note: this check is recommended but completely optional)
@@ -15,4 +9,9 @@ if (process.env.NODE_ENV === "development") {
   setupDevPlatform();
 }
 
-module.exports = withNextIntl(nextConfig);
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
+
+export default withNextIntl(nextConfig);
