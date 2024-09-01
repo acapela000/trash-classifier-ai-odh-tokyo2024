@@ -30,6 +30,15 @@
     "hint4": "Phân loại các vật liệu khác nhau vào các thùng phù hợp.",
     "hint5": "Tránh tái chế các hộp đựng thức ăn dính dầu mỡ."
   },
+  "ClassifierModels": {
+    "classifier": "Kết quả Dự đoán: Rác này có thể được phân loại là",
+    "can": "Lon",
+    "carton": "Hộp/Thùng cạc tông",
+    "paper": "Giấy",
+    "petbottle": "Chai nhựa PET",
+    "glass": "Thủy tinh",
+    "plastic": "Nhựa"
+  },
   "FormInputZipcode": {
     "label": "Nhập vị trí hiện tại của bạn để tìm nơi/thùng rác gần nhất",
     "postalCode": "Mã bưu điện",

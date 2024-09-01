@@ -51,7 +51,7 @@ export default function ClassifierModels(props: Props) {
                 {prediction ? (
                     prediction.map((key: any, i: any) => (
                         <div key={i} className="text-center">
-                            {key.className} <CircularProgress
+                            {cm((key.className as string).toLowerCase())} <CircularProgress
                                 aria-label="Loading..."
                                 size="lg"
                                 classNames={{
@@ -62,17 +62,17 @@ export default function ClassifierModels(props: Props) {
                                 color={
                                     (() => {
                                         switch (key.className) {
-                                            case cm('type1'):
-                                                return 'warning';
-                                            case cm('type2-1'):
-                                            case cm('type2-2'):
-                                            case cm('type3'):
+                                            case 'Can':
+                                                return 'primary';
+                                            case 'Paper':
+                                            case 'Carton':
+                                                return 'warning'
+                                            case 'Petbottle':
                                                 return 'success';
-                                            case cm('type4'):
-                                            case cm('type5'):
+                                            case 'Glass':
                                                 return 'danger';
-                                            // case 'Raw trash':
-                                            //     return 'primary';
+                                            case 'Plastic':
+                                                return 'secondary';
                                             default:
                                                 return 'secondary';
                                         }

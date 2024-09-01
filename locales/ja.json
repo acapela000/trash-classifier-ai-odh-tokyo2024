@@ -32,12 +32,12 @@
   },
   "ClassifierModels": {
     "classifier": "予測結果：このゴミは以下のように分類できます。",
-    "type1": "缶",
-    "type2-1": "カートン",
-    "type2-2": "紙",
-    "type3": "ペットボトル",
-    "type4": "ガラス",
-    "type5": "プラスチック"
+    "can": "缶",
+    "carton": "カートン",
+    "paper": "紙",
+    "petbottle": "ペットボトル",
+    "glass": "ガラス",
+    "plastic": "プラスチック"
   },
   "FormInputZipcode": {
     "label": "最寄りのゴミ捨て場/ゴミ箱を探すために、現在の場所を入力してください",

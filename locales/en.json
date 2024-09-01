@@ -32,12 +32,12 @@
   },
   "ClassifierModels": {
     "classifier": "Prediction Result: This trash can be classified as",
-    "type1": "Can",
-    "type2-1": "Carton",
-    "type2-2": "Paper",
-    "type3": "Petbottle",
-    "type4": "Glass",
-    "type5": "Plastic"
+    "can": "Can",
+    "carton": "Carton",
+    "paper": "Paper",
+    "petbottle": "Petbottle",
+    "glass": "Glass",
+    "plastic": "Plastic"
   },
   "FormInputZipcode": {
     "label": "Input your current location to get nearest trash disposal place/trash bin",
