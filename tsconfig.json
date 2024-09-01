@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/actions/Document-scan.tsx", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".js", ".jsx"],
+  "include": ["src/actions/Document-scan.tsx", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".js", ".jsx", "scrapper/index.js"],
   "exclude": ["node_modules"]
 }
