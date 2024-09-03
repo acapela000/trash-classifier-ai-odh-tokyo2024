@@ -29,7 +29,7 @@ export default function ClassifierModels(props: Props) {
         }
 
         const loadModel = async () => {
-            const loadedModel: any = await tmImage.load('/tm-my-image-model/model.json', '/tm-my-image-model/metadata.json');
+            const loadedModel: any = await tmImage.load('/tm-my-image-model-v1.2/model.json', '/tm-my-image-model-v1.2/metadata.json');
             setModel(loadedModel);
 
             runPrediction(loadedModel);
@@ -51,7 +51,7 @@ export default function ClassifierModels(props: Props) {
                 {prediction ? (
                     prediction.map((key: any, i: any) => (
                         <div key={i} className="text-center">
-                            {cm((key.className as string).toLowerCase())} <CircularProgress
+                            {cm((key.className as string))} <CircularProgress
                                 aria-label="Loading..."
                                 size="lg"
                                 classNames={{
@@ -62,17 +62,18 @@ export default function ClassifierModels(props: Props) {
                                 color={
                                     (() => {
                                         switch (key.className) {
-                                            case 'Can':
+                                            case 'can':
                                                 return 'primary';
-                                            case 'Paper':
-                                            case 'Carton':
+                                            case 'carton-paper':
                                                 return 'warning'
-                                            case 'Petbottle':
+                                            case 'petbottle':
                                                 return 'success';
-                                            case 'Glass':
+                                            case 'glass':
                                                 return 'danger';
-                                            case 'Plastic':
+                                            case 'plastic':
                                                 return 'secondary';
+                                            case 'raw-trash':
+                                                return 'secondary'
                                             default:
                                                 return 'secondary';
                                         }
