@@ -33,11 +33,11 @@
   "ClassifierModels": {
     "classifier": "Kết quả Dự đoán: Rác này có thể được phân loại là",
     "can": "Lon",
-    "carton": "Hộp/Thùng cạc tông",
-    "paper": "Giấy",
+    "carton-paper": "Thùng cạc tông/Giấy",
     "petbottle": "Chai nhựa PET",
     "glass": "Thủy tinh",
-    "plastic": "Nhựa"
+    "plastic": "Nhựa",
+    "raw-trash": "Rác tươi"
   },
   "FormInputZipcode": {
     "label": "Nhập vị trí hiện tại của bạn để tìm nơi/thùng rác gần nhất",

@@ -33,11 +33,11 @@
   "ClassifierModels": {
     "classifier": "Prediction Result: This trash can be classified as",
     "can": "Can",
-    "carton": "Carton",
-    "paper": "Paper",
+    "carton-paper": "Carton/Paper",
     "petbottle": "Petbottle",
     "glass": "Glass",
-    "plastic": "Plastic"
+    "plastic": "Plastic",
+    "raw-trash": "Raw Trash"
   },
   "FormInputZipcode": {
     "label": "Input your current location to get nearest trash disposal place/trash bin",

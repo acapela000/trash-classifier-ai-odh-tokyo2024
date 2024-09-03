@@ -33,11 +33,11 @@
   "ClassifierModels": {
     "classifier": "予測結果：このゴミは以下のように分類できます。",
     "can": "缶",
-    "carton": "カートン",
-    "paper": "紙",
+    "carton-paper": "カートン・紙",
     "petbottle": "ペットボトル",
     "glass": "ガラス",
-    "plastic": "プラスチック"
+    "plastic": "プラスチック",
+    "raw-trash": "生ごみ"
   },
   "FormInputZipcode": {
     "label": "最寄りのゴミ捨て場/ゴミ箱を探すために、現在の場所を入力してください",
