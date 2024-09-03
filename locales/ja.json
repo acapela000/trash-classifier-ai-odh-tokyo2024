@@ -18,7 +18,7 @@
   },
   "NavBar": {
     "home": "ホーム",
-    "calendar": "ゴミ収集日程",
+    "calendar-noti": "ゴミ収集日程",
     "map": "ゴミ箱マップ",
     "setting": "設定"
   },

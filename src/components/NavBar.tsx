@@ -24,9 +24,9 @@ export default function NavBar() {
                     shape="circle"
                     placement="top-right"
                 >
-                    <Link href="/calendar" className="flex flex-col items-center text-yellow-500" prefetch={false}>
+                    <Link href="/calendar-noti" className="flex flex-col items-center text-yellow-500" prefetch={false}>
                         <CalendarDaysIcon className="w-8 h-8 text-yellow-500 hover:text-yellow-300" />
-                        <span className="text-sm">{n('calendar')}</span>
+                        <span className="text-sm">{n('calendar-noti')}</span>
                     </Link>
                 </Badge>
                 <Link href="/map" className="flex flex-col items-center text-blue-500" prefetch={false}>
