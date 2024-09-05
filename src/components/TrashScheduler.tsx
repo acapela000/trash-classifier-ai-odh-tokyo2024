@@ -1,15 +1,19 @@
-"use client";
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { CustomChart } from 'echarts/charts';
 import { CalendarComponent, TooltipComponent } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
-import { range } from "@tensorflow/tfjs";
+import axios from 'axios';
+import { allSchedules } from "@/actions/FetchDb";
+import { any } from "@tensorflow/tfjs";
+
 
 echarts.use(
     [CustomChart, CalendarComponent, SVGRenderer, TooltipComponent]
 );
+
 const config = {
     tooltip: {},
     calendar: [
@@ -37,18 +41,38 @@ const config = {
     }
 };
 
-export default function TrashScheduler() {
-    const [option, setOption] = React.useState(config);
-    //get current year/month
-    // const now = (new Date().getMonth() + 1).toString() + '-' + new Date().getFullYear().toString();
-    // range = now;
+export default async function TrashScheduler() {
+    const [option, setOption] = useState(config);
+    // interact with the database
+
+    useEffect(() => {
+        // get only schedules of a particular location
+        const fetchData = async () => {
+            const schedules: any[] = await allSchedules();
+            console.log(schedules);
+            // map data from db to match the object in echarts
+
+            setOption({
+                ...config,
+                series: [{
+                    ...config.series,
+                    data: schedules
+                }] as any
+            }),
+                console.log(option);
+        }
+        fetchData();
+    }, []);
+
 
     return (
+        // display the schedule, location
         <ReactEChartsCore
             echarts={echarts}
             option={option}
+            notMerge={true}
             lazyUpdate={true}
-            style={{ width: "100%", height: "90vh" }}
+            style={{ height: '100vh', width: '100%' }}
         />
     );
 }

@@ -19,7 +19,9 @@
     "crawlee": "^3.11.2",
     "fs": "^0.0.1-security",
     "google-search-results-nodejs": "^2.1.0",
+    "knex": "^3.1.0",
     "playwright": "^1.46.1",
+    "sqlite3": "^5.1.7",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
