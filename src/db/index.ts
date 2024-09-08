@@ -3,6 +3,7 @@ import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
 import { env } from "process";
 
+//config();
 // config({ path: ".env" }); // or .env.local
 
 const client = createClient({

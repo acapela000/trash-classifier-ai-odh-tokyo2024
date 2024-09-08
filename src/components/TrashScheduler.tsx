@@ -5,9 +5,7 @@ import * as echarts from 'echarts/core';
 import { CustomChart } from 'echarts/charts';
 import { CalendarComponent, TooltipComponent } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
-import axios from 'axios';
 import { allSchedules } from "@/actions/FetchDb";
-import { any } from "@tensorflow/tfjs";
 
 
 echarts.use(
@@ -41,7 +39,7 @@ const config = {
     }
 };
 
-export default async function TrashScheduler() {
+export default function TrashScheduler() {
     const [option, setOption] = useState(config);
     // interact with the database
 
@@ -51,19 +49,19 @@ export default async function TrashScheduler() {
             const schedules: any[] = await allSchedules();
             console.log(schedules);
             // map data from db to match the object in echarts
+            const chartData = schedules.map((schedule) => [schedule.week_day, schedule.day]);
 
             setOption({
                 ...config,
                 series: [{
                     ...config.series,
-                    data: schedules
+                    data: chartData
                 }] as any
             }),
                 console.log(option);
         }
         fetchData();
     }, []);
-
 
     return (
         // display the schedule, location
