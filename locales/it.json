@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "Evento",
+    "eventContent": "Eventi su riciclaggio, riduzione del riscaldamento globale e protezione ambientale...",
+    "event1": "Progetto sostenibile alla Maratona di Tokyo 2024",
+    "event2": "Bazaar di riciclo gratuito al campus di Kashiwa in primavera 2024",
+    "event3": "Tokyo 2024 Sostenibilità - Mostra di gestione dei rifiuti e riciclo - Tokyo Big Sight",
+    "event4": "Attività di volontariato per la raccolta dei rifiuti a Tokyo",
+    "event5": "Protezione dell'ambiente - varie attività",
+    "event-more": "Visualizza più eventi",
+    "qa": "Fai domande e ricevi risposte",
+    "help-feedback": "Aiuto e Feedback",
+    "help-feedback-content": "Ottieni aiuto e fornisci feedback per migliorare l'app web"
+  },
+  "CameraCapture": {
+    "takePhoto": "Scatta una foto del rifiuto da classificare.",
+    "take-upload": "Scatta/Carica una foto"
+  },
+  "NavBar": {
+    "home": "Home",
+    "calendar-noti": "Calendario",
+    "map": "Mappa dei bidoni",
+    "setting": "Impostazioni"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Consigli per il riciclaggio",
+    "hint1": "Sciacquare le bottiglie di plastica prima del riciclo.",
+    "hint2": "Appiattire le scatole di cartone per risparmiare spazio.",
+    "hint3": "Rimuovere i tappi dalle bottiglie prima di riciclarle.",
+    "hint4": "Separare i materiali nei contenitori appropriati.",
+    "hint5": "Evitare di riciclare contenitori unti."
+  },
+  "ClassifierModels": {
+    "classifier": "Risultato della previsione: Questo rifiuto può essere classificato come",
+    "can": "Lattina",
+    "carton-paper": "Cartone/Carta",
+    "petbottle": "Bottiglia di plastica",
+    "glass": "Vetro",
+    "plastic": "Plastica",
+    "raw-trash": "Rifiuti organici"
+  },
+  "FormInputZipcode": {
+    "label": "Inserisci la tua posizione attuale per trovare il punto di smaltimento dei rifiuti più vicino",
+    "postalCode": "Codice Postale",
+    "pref": "Provincia",
+    "city-district": "Città-Distretto",
+    "town": "Quartiere"
+  }
+}

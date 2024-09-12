@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "Veranstaltung",
+    "eventContent": "Veranstaltungen zum Recycling, zur Reduzierung der globalen Erwärmung und zum Umweltschutz...",
+    "event1": "Nachhaltiges Projekt beim Tokyo Marathon 2024",
+    "event2": "Kostenloser Recycling-Basar auf dem Kashiwa-Campus im Frühjahr 2024",
+    "event3": "Tokyo 2024 Nachhaltigkeit - Ausstellung zur Abfallentsorgung/Recycling - Tokyo Big Sight",
+    "event4": "Freiwillige Müllsammelaktion in Tokio",
+    "event5": "Umweltschutz - Verschiedene Aktivitäten",
+    "event-more": "Weitere Veranstaltungen anzeigen",
+    "qa": "Stellen Sie Fragen und erhalten Sie Antworten",
+    "help-feedback": "Hilfe und Feedback",
+    "help-feedback-content": "Erhalten Sie Hilfe und geben Sie Feedback, um die Web-App zu verbessern"
+  },
+  "CameraCapture": {
+    "takePhoto": "Machen Sie ein Foto des Mülls zur Klassifizierung.",
+    "take-upload": "Foto machen/Hochladen"
+  },
+  "NavBar": {
+    "home": "Startseite",
+    "calendar-noti": "Kalender",
+    "map": "Mülltonnenkarte",
+    "setting": "Einstellungen"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Recycling-Tipps",
+    "hint1": "Spülen Sie Plastikflaschen vor dem Recycling aus.",
+    "hint2": "Flachen Sie Kartons, um Platz zu sparen.",
+    "hint3": "Entfernen Sie die Deckel von Flaschen, bevor Sie sie recyceln.",
+    "hint4": "Trennen Sie die Materialien in die entsprechenden Behälter.",
+    "hint5": "Vermeiden Sie das Recycling von fettigen Lebensmittelbehältern."
+  },
+  "ClassifierModels": {
+    "classifier": "Vorhersageergebnis: Dieser Abfall kann als folgender klassifiziert werden",
+    "can": "Dose",
+    "carton-paper": "Karton/Papier",
+    "petbottle": "Plastikflasche",
+    "glass": "Glas",
+    "plastic": "Plastik",
+    "raw-trash": "Bioabfall"
+  },
+  "FormInputZipcode": {
+    "label": "Geben Sie Ihren aktuellen Standort ein, um die nächstgelegene Abfallentsorgungsstelle zu finden",
+    "postalCode": "Postleitzahl",
+    "pref": "Bundesland",
+    "city-district": "Stadt/Stadtteil",
+    "town": "Ort"
+  }
+}

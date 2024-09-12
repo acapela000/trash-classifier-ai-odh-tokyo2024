@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "Acara",
+    "eventContent": "Acara tentang daur ulang, pengurangan pemanasan global, dan perlindungan lingkungan...",
+    "event1": "Proyek berkelanjutan di Tokyo Marathon 2024",
+    "event2": "Bazar daur ulang gratis di kampus Kashiwa pada musim semi 2024",
+    "event3": "Tokyo 2024 Keberlanjutan - Pameran manajemen sampah/daur ulang - Tokyo Big Sight",
+    "event4": "Kegiatan relawan pengumpulan sampah di Tokyo",
+    "event5": "Perlindungan lingkungan - berbagai kegiatan",
+    "event-more": "Lihat lebih banyak acara",
+    "qa": "Ajukan pertanyaan dan dapatkan jawaban",
+    "help-feedback": "Bantuan dan Masukan",
+    "help-feedback-content": "Dapatkan bantuan dan berikan masukan untuk meningkatkan aplikasi web"
+  },
+  "CameraCapture": {
+    "takePhoto": "Ambil foto sampah untuk diklasifikasikan.",
+    "take-upload": "Ambil/Upload Foto"
+  },
+  "NavBar": {
+    "home": "Beranda",
+    "calendar-noti": "Kalender",
+    "map": "Peta Tempat Sampah",
+    "setting": "Pengaturan"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Tips Daur Ulang",
+    "hint1": "Bilas botol plastik sebelum mendaur ulang.",
+    "hint2": "Ratakan kotak karton untuk menghemat ruang.",
+    "hint3": "Lepaskan tutup dari botol sebelum mendaur ulang.",
+    "hint4": "Pisahkan bahan ke tempat sampah yang sesuai.",
+    "hint5": "Hindari mendaur ulang wadah yang berminyak."
+  },
+  "ClassifierModels": {
+    "classifier": "Hasil prediksi: Sampah ini dapat diklasifikasikan sebagai",
+    "can": "Kaleng",
+    "carton-paper": "Karton/Kertas",
+    "petbottle": "Botol Plastik",
+    "glass": "Kaca",
+    "plastic": "Plastik",
+    "raw-trash": "Sampah Organik"
+  },
+  "FormInputZipcode": {
+    "label": "Masukkan lokasi Anda saat ini untuk menemukan titik pembuangan sampah terdekat",
+    "postalCode": "Kode Pos",
+    "pref": "Provinsi",
+    "city-district": "Kota-Distrik",
+    "town": "Kecamatan"
+  }
+}

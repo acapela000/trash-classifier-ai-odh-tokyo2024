@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "Eventos",
+    "eventContent": "Cualquier evento sobre reciclaje, reducción del calentamiento global, protección del medio ambiente...",
+    "event1": "Proyectos sostenibles a través del Maratón de Tokio 2024",
+    "event2": "Bazar de reciclaje gratuito primavera 2024 en el campus de Kashiwa",
+    "event3": "Mantenimiento/Resiliencia TOKIO 2024 - Exposición de reciclaje/tratamiento de residuos de construcción - Tokyo Big Sight",
+    "event4": "Actividades de voluntariado relacionadas con la recogida de basura en Tokio",
+    "event5": "Proteger el medio ambiente - Diversas actividades",
+    "event-more": "Para más eventos",
+    "qa": "Puedes hacer preguntas y obtener respuestas aquí",
+    "help-feedback": "Ayuda y Retroalimentación",
+    "help-feedback-content": "Puedes obtener ayuda y proporcionar comentarios para mejorar la aplicación web"
+  },
+  "CameraCapture": {
+    "takePhoto": "Toma una foto de un pedazo de basura para clasificarlo.",
+    "take-upload": "Tomar/Subir una foto."
+  },
+  "NavBar": {
+    "home": "Inicio",
+    "calendar-noti": "Calendario",
+    "map": "Mapa de basureros",
+    "setting": "Configuración"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Consejos de reciclaje",
+    "hint1": "Enjuaga las botellas de plástico antes de reciclar.",
+    "hint2": "Aplana las cajas de cartón para ahorrar espacio.",
+    "hint3": "Retira las tapas de las botellas antes de reciclar.",
+    "hint4": "Separa los materiales en contenedores adecuados.",
+    "hint5": "Evita reciclar contenedores de comida grasosa."
+  },
+  "ClassifierModels": {
+    "classifier": "Resultado de la predicción: Este residuo puede clasificarse como",
+    "can": "Lata",
+    "carton-paper": "Cartón/Papel",
+    "petbottle": "Botella de plástico",
+    "glass": "Vidrio",
+    "plastic": "Plástico",
+    "raw-trash": "Residuos orgánicos"
+  },
+  "FormInputZipcode": {
+    "label": "Introduce tu ubicación actual para obtener el lugar/basurero más cercano",
+    "postalCode": "Código Postal",
+    "pref": "Prefectura",
+    "city-district": "Ciudad-Distrito",
+    "town": "Barrio"
+  }
+}

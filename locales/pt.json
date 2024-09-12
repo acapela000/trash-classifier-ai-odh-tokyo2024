@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "Evento",
+    "eventContent": "Eventos sobre reciclagem, redução do aquecimento global e proteção ambiental...",
+    "event1": "Projeto sustentável na Maratona de Tóquio 2024",
+    "event2": "Bazaar gratuito de reciclagem no campus de Kashiwa na primavera de 2024",
+    "event3": "Tóquio 2024 Sustentabilidade - Exposição de gestão de resíduos/reciclagem - Tokyo Big Sight",
+    "event4": "Atividade voluntária de coleta de lixo em Tóquio",
+    "event5": "Proteção ambiental - várias atividades",
+    "event-more": "Ver mais eventos",
+    "qa": "Faça perguntas e receba respostas",
+    "help-feedback": "Ajuda e Feedback",
+    "help-feedback-content": "Obtenha ajuda e forneça feedback para melhorar o aplicativo web"
+  },
+  "CameraCapture": {
+    "takePhoto": "Tire uma foto do lixo para classificar.",
+    "take-upload": "Tirar/Carregar foto"
+  },
+  "NavBar": {
+    "home": "Início",
+    "calendar-noti": "Calendário",
+    "map": "Mapa de Lixeiras",
+    "setting": "Configurações"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Dicas de Reciclagem",
+    "hint1": "Enxágue as garrafas de plástico antes de reciclar.",
+    "hint2": "Amasse as caixas de papelão para economizar espaço.",
+    "hint3": "Remova as tampas das garrafas antes de reciclar.",
+    "hint4": "Separe os materiais nas lixeiras apropriadas.",
+    "hint5": "Evite reciclar recipientes oleosos."
+  },
+  "ClassifierModels": {
+    "classifier": "Resultado da previsão: Este lixo pode ser classificado como",
+    "can": "Lata",
+    "carton-paper": "Caixa de papelão/Papel",
+    "petbottle": "Garrafa plástica",
+    "glass": "Vidro",
+    "plastic": "Plástico",
+    "raw-trash": "Resíduos orgânicos"
+  },
+  "FormInputZipcode": {
+    "label": "Insira sua localização atual para encontrar o ponto de descarte de lixo mais próximo",
+    "postalCode": "Código Postal",
+    "pref": "Estado",
+    "city-district": "Cidade-Distrito",
+    "town": "Bairro"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "Événements",
+    "eventContent": "Tout événement concernant le recyclage, la réduction du réchauffement climatique, la protection de l'environnement...",
+    "event1": "Projets durables via le Marathon de Tokyo 2024",
+    "event2": "Bazar gratuit de recyclage Printemps 2024 au campus de Kashiwa",
+    "event3": "Maintenance / Résilience TOKYO 2024 - Salon du recyclage et traitement des déchets de construction - Tokyo Big Sight",
+    "event4": "Activités de bénévolat liées à la collecte des déchets à Tokyo",
+    "event5": "Protéger l'environnement - Diverses activités",
+    "event-more": "Pour plus d'événements",
+    "qa": "Vous pouvez poser des questions et obtenir des réponses ici",
+    "help-feedback": "Aide & Retour",
+    "help-feedback-content": "Vous pouvez obtenir de l'aide et donner des retours pour améliorer l'application"
+  },
+  "CameraCapture": {
+    "takePhoto": "Prenez une photo d'un déchet pour qu'il soit classé.",
+    "take-upload": "Prendre/Envoyer une photo."
+  },
+  "NavBar": {
+    "home": "Accueil",
+    "calendar-noti": "Calendrier",
+    "map": "Carte des poubelles",
+    "setting": "Paramètres"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Conseils de recyclage",
+    "hint1": "Rincez les bouteilles en plastique avant de les recycler.",
+    "hint2": "Aplatissez les cartons pour économiser de l'espace.",
+    "hint3": "Retirez les bouchons des bouteilles avant de recycler.",
+    "hint4": "Séparez les matériaux dans des bacs appropriés.",
+    "hint5": "Évitez de recycler les contenants alimentaires gras."
+  },
+  "ClassifierModels": {
+    "classifier": "Résultat de la prédiction : Ce déchet peut être classé comme",
+    "can": "Canette",
+    "carton-paper": "Carton/Papier",
+    "petbottle": "Bouteille en plastique",
+    "glass": "Verre",
+    "plastic": "Plastique",
+    "raw-trash": "Déchets organiques"
+  },
+  "FormInputZipcode": {
+    "label": "Entrez votre emplacement actuel pour obtenir le lieu de traitement des déchets le plus proche/poubelle",
+    "postalCode": "Code Postal",
+    "pref": "Préfecture",
+    "city-district": "Ville-District",
+    "town": "Quartier"
+  }
+}

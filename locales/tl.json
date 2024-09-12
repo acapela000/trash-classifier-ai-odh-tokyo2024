@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "Kaganapan",
+    "eventContent": "Mga kaganapan tungkol sa pagre-recycle, pagpapababa ng global warming, at proteksyon sa kapaligiran...",
+    "event1": "Sustainable na proyekto sa Tokyo Marathon 2024",
+    "event2": "Libreng recycling bazaar sa Kashiwa campus ngayong spring 2024",
+    "event3": "Tokyo 2024 Sustainability - Pagtatanghal ng pamamahala ng basura/recycle - Tokyo Big Sight",
+    "event4": "Boluntaryong aktibidad ng pangongolekta ng basura sa Tokyo",
+    "event5": "Proteksyon sa kalikasan - iba't ibang aktibidad",
+    "event-more": "Tingnan pa ang mga kaganapan",
+    "qa": "Magtanong at makakuha ng sagot",
+    "help-feedback": "Tulong at Feedback",
+    "help-feedback-content": "Kumuha ng tulong at magbigay ng feedback para mapabuti ang web app"
+  },
+  "CameraCapture": {
+    "takePhoto": "Kumuha ng litrato ng basura para sa pagkakategorya.",
+    "take-upload": "Kunan/I-upload ang Litrato"
+  },
+  "NavBar": {
+    "home": "Bahay",
+    "calendar-noti": "Kalendaryo",
+    "map": "Mapa ng Basurahan",
+    "setting": "Mga Setting"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "Mga Tip sa Pagre-recycle",
+    "hint1": "Banlawan ang mga plastik na bote bago mag-recycle.",
+    "hint2": "Patagin ang mga kahon ng karton upang makatipid ng espasyo.",
+    "hint3": "Tanggalin ang mga takip sa bote bago i-recycle.",
+    "hint4": "Ihiwalay ang mga materyales sa tamang lalagyan.",
+    "hint5": "Iwasang mag-recycle ng mga lalagyan na may mantika."
+  },
+  "ClassifierModels": {
+    "classifier": "Resulta ng prediksyon: Maaaring mai-kategorya ang basurang ito bilang",
+    "can": "Lata",
+    "carton-paper": "Karton/Papel",
+    "petbottle": "Plastic na Bote",
+    "glass": "Salamin",
+    "plastic": "Plastik",
+    "raw-trash": "Organikong Basura"
+  },
+  "FormInputZipcode": {
+    "label": "Ilagay ang iyong kasalukuyang lokasyon upang makahanap ng pinakamalapit na lugar ng pagtatapon ng basura",
+    "postalCode": "Postal Code",
+    "pref": "Lalawigan",
+    "city-district": "Lungsod-Distrito",
+    "town": "Barangay"
+  }
+}

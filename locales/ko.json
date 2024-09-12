@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "이벤트",
+    "eventContent": "재활용, 지구 온난화 감소, 환경 보호에 관한 이벤트...",
+    "event1": "2024년 도쿄 마라톤을 통한 지속 가능한 프로젝트",
+    "event2": "2024년 봄 카시와 캠퍼스에서 열리는 무료 재활용 바자회",
+    "event3": "도쿄2024 유지/복원 - 재활용/건설 폐기물 처리 전시회 - 도쿄 빅사이트",
+    "event4": "도쿄에서 쓰레기 줍기 자원 봉사 활동",
+    "event5": "환경 보호 - 다양한 활동",
+    "event-more": "더 많은 이벤트 보기",
+    "qa": "질문을 하고 답변을 받을 수 있습니다",
+    "help-feedback": "도움말 및 피드백",
+    "help-feedback-content": "도움을 받고 웹 앱 개선을 위한 피드백을 제공할 수 있습니다"
+  },
+  "CameraCapture": {
+    "takePhoto": "쓰레기의 사진을 찍어 분류하세요.",
+    "take-upload": "사진 찍기/업로드"
+  },
+  "NavBar": {
+    "home": "홈",
+    "calendar-noti": "캘린더",
+    "map": "쓰레기통 지도",
+    "setting": "설정"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "재활용 팁",
+    "hint1": "플라스틱 병을 재활용하기 전에 헹구세요.",
+    "hint2": "공간 절약을 위해 종이 상자를 납작하게 만드세요.",
+    "hint3": "병을 재활용하기 전에 뚜껑을 제거하세요.",
+    "hint4": "다른 재료를 적절한 쓰레기통에 분리하세요.",
+    "hint5": "기름진 음식 용기는 재활용하지 마세요."
+  },
+  "ClassifierModels": {
+    "classifier": "예측 결과: 이 쓰레기는 다음으로 분류될 수 있습니다",
+    "can": "캔",
+    "carton-paper": "종이 상자/종이",
+    "petbottle": "페트병",
+    "glass": "유리",
+    "plastic": "플라스틱",
+    "raw-trash": "음식물 쓰레기"
+  },
+  "FormInputZipcode": {
+    "label": "가장 가까운 쓰레기 처리 장소/쓰레기통을 찾으려면 현재 위치를 입력하세요",
+    "postalCode": "우편번호",
+    "pref": "도/시",
+    "city-district": "시/구",
+    "town": "동네"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "Events": {
+    "event": "事件",
+    "eventContent": "关于回收、全球变暖减排、环境保护的任何活动...",
+    "event1": "2024年东京马拉松的可持续项目",
+    "event2": "2024年春季柏市校园举办的免费回收集市",
+    "event3": "2024年东京维护/复原 - 回收/建筑废物处理展 - 东京国际展示场",
+    "event4": "东京的垃圾捡拾志愿活动",
+    "event5": "保护环境 - 各种活动",
+    "event-more": "查看更多活动",
+    "qa": "你可以在这里提问并得到答案",
+    "help-feedback": "帮助与反馈",
+    "help-feedback-content": "你可以获得帮助并提供反馈以改进该网络应用"
+  },
+  "CameraCapture": {
+    "takePhoto": "拍一张垃圾的照片以进行分类。",
+    "take-upload": "拍照/上传照片。"
+  },
+  "NavBar": {
+    "home": "首页",
+    "calendar-noti": "日历",
+    "map": "垃圾桶地图",
+    "setting": "设置"
+  },
+  "RecyclingHints": {
+    "recyclingHints": "回收提示",
+    "hint1": "回收前冲洗塑料瓶。",
+    "hint2": "压平纸箱以节省空间。",
+    "hint3": "回收前请移除瓶盖。",
+    "hint4": "将不同材料分开放入适当的垃圾桶。",
+    "hint5": "避免回收油腻的食品容器。"
+  },
+  "ClassifierModels": {
+    "classifier": "预测结果：此垃圾分类为",
+    "can": "罐头",
+    "carton-paper": "纸箱/纸",
+    "petbottle": "塑料瓶",
+    "glass": "玻璃",
+    "plastic": "塑料",
+    "raw-trash": "生垃圾"
+  },
+  "FormInputZipcode": {
+    "label": "输入当前位置以获取最近的垃圾处理点/垃圾桶",
+    "postalCode": "邮政编码",
+    "pref": "省/市",
+    "city-district": "市/区",
+    "town": "街道"
+  }
+}
