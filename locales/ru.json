@@ -45,5 +45,14 @@
     "pref": "Префектура",
     "city-district": "Город-район",
     "town": "Район"
+  },
+  "SelectLanguage": {
+    "selectLg": "Выберите свой язык"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "График отображает очки, которые вы собираете для углеродных кредитов"
+  },
+  "Calendar": {
+    "nameMap": "В,П,В,С,Ч,П,С"
   }
 }

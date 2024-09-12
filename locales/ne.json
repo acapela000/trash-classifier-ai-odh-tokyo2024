@@ -45,5 +45,14 @@
     "pref": "प्रान्त",
     "city-district": "शहर-जिल्ला",
     "town": "शहर"
+  },
+  "SelectLanguage": {
+    "selectLg": "तपाईंको भाषा चयन गर्नुहोस्"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "चार्टले तपाईंले कार्बन क्रेडिटका लागि जम्मा गरेका अंकहरू देखाउँछ"
+  },
+  "Calendar": {
+    "nameMap": "आ,सो,मं,बु,बि,शु,श"
   }
 }

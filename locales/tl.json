@@ -45,5 +45,14 @@
     "pref": "Lalawigan",
     "city-district": "Lungsod-Distrito",
     "town": "Barangay"
+  },
+  "SelectLanguage": {
+    "selectLg": "Piliin ang iyong wika"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "Ipinapakita ng tsart ang mga puntos na iyong nakukuha para sa carbon credit"
+  },
+  "Calendar": {
+    "nameMap": "L,L,M,M,H,B,S"
   }
 }

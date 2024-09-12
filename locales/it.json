@@ -45,5 +45,14 @@
     "pref": "Provincia",
     "city-district": "Città-Distretto",
     "town": "Quartiere"
+  },
+  "SelectLanguage": {
+    "selectLg": "Seleziona la tua lingua"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "Il grafico mostra i punti raccolti per i crediti di carbonio"
+  },
+  "Calendar": {
+    "nameMap": "D,L,M,M,G,V,S"
   }
 }

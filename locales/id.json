@@ -45,5 +45,14 @@
     "pref": "Provinsi",
     "city-district": "Kota-Distrik",
     "town": "Kecamatan"
+  },
+  "SelectLanguage": {
+    "selectLg": "Pilih bahasa Anda"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "Grafik menampilkan poin yang Anda kumpulkan untuk kredit karbon"
+  },
+  "Calendar": {
+    "nameMap": "M,S,S,R,K,J,S"
   }
 }

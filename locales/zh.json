@@ -45,5 +45,14 @@
     "pref": "省/市",
     "city-district": "市/区",
     "town": "街道"
+  },
+  "SelectLanguage": {
+    "selectLg": "选择你的语言"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "图表显示您收集的碳信用积分"
+  },
+  "Calendar": {
+    "nameMap": "ZH"
   }
 }

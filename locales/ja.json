@@ -45,5 +45,14 @@
     "pref": "都道府県",
     "city-district": "市区町村",
     "town": "町"
+  },
+  "SelectLanguage": {
+    "selectLg": "言語を選択してください"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "チャートは、あなたが集めたカーボンクレジットのポイントを表示します"
+  },
+  "Calendar": {
+    "nameMap": "日,月,火,水,木,金,土"
   }
 }

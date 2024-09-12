@@ -6,7 +6,7 @@ import * as echarts from 'echarts/core';
 import { BarChart, LineChart } from 'echarts/charts';
 import { TooltipComponent, GridComponent } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
-
+import { useTranslations } from 'next-intl';
 
 echarts.use(
     [LineChart, BarChart, GridComponent, SVGRenderer, TooltipComponent]
@@ -55,6 +55,8 @@ const config = {
 };
 
 export default function Echart() {
+    const s = useTranslations('SimulatorForPointsFrReduceCO2');
+
     // Data preparation https://echarts.apache.org/examples/en/editor.html?c=map-bar-morph&lang=ts
     // const locations = ['鷺宮3丁目153番4', '大和町1丁目67番15', '江原町3丁目24番8', '上高田4丁目34番3', '本町6丁目58番16'];
     // const points: any = [480000, 515000, 502000, 508000, 603000];
@@ -86,7 +88,7 @@ export default function Echart() {
 
     return (
         <div style={{ padding: '20px' }}>
-            <h3>The chart display the points you gather for carbon credit</h3>
+            <h3>{s('simulator')}</h3>
             <ReactEChartsCore
                 echarts={echarts}
                 option={option}

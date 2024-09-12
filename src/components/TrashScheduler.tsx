@@ -5,7 +5,8 @@ import * as echarts from 'echarts/core';
 import { CustomChart } from 'echarts/charts';
 import { CalendarComponent, TooltipComponent } from 'echarts/components';
 import { SVGRenderer } from 'echarts/renderers';
-import { allSchedules } from "@/actions/FetchDb";
+import { useLocale, useTranslations } from "next-intl";
+// import { allSchedules } from "@/actions/FetchDb";
 
 
 echarts.use(
@@ -65,38 +66,57 @@ const pathes = [
 ];
 const colors = ['#c4332b', '#16B644', '#6862FD', '#FDC763'];
 
+const directWeekLocale: string[] = ['en', 'zh'];
 export default function TrashScheduler() {
-    const [option, setOption] = useState(config);
-    // interact with the database
-
-    useEffect(() => {
-        // get only schedules of a particular location
-        const fetchData = async () => {
-            const schedules: any[] = await allSchedules();
-            console.log(schedules);
-            // map data from db to match the object in echarts
-            const chartData = schedules.map((schedule) => [schedule.week_day, schedule.day]);
-
-            setOption({
-                ...config,
-                series: [{
-                    ...config.series,
-                    data: chartData
-                }] as any
-            }),
-                console.log(option);
+    const locale = useLocale();
+    const c = useTranslations('Calendar');
+    const [option, setOption] = React.useState({});
+    const week = React.useMemo(() => {
+        if (directWeekLocale.includes(locale)) {
+            return c('nameMap');
         }
-        fetchData();
-    }, []);
-
+        return c('nameMap').split(',');
+    }, [c, locale]);
+    React.useEffect(() => {
+        setOption({
+            tooltip: {},
+            calendar: [
+                {
+                    left: 'center',
+                    top: 'middle',
+                    cellSize: [70, 70],
+                    yearLabel: { show: false },
+                    orient: 'vertical',
+                    monthLabel: {
+                        show: false
+                    },
+                    range: '2024-07',
+                    dayLabel: {
+                        firstDay: locale == 'en' ? 0 : 1,
+                        nameMap: week
+                    },
+                }
+            ],
+            series: {
+                type: 'custom',
+                coordinateSystem: 'calendar',
+                dimensions: [undefined, { type: 'ordinal' }],
+                data: [],
+                renderItem: function (params: any, api: any) { return; }
+            }
+        });
+    }, [week, locale]);
+    //get current year/month
+    // const now = (new Date().getMonth() + 1).toString() + '-' + new Date().getFullYear().toString();
+    // range = now;
     return (
-        // display the schedule, location
+
         <ReactEChartsCore
             echarts={echarts}
             option={option}
-            notMerge={true}
             lazyUpdate={true}
-            style={{ height: '100vh', width: '100%' }}
+            style={{ width: "100%", height: "90vh" }}
         />
+
     );
 }

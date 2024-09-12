@@ -45,5 +45,14 @@
     "pref": "Prefectura",
     "city-district": "Ciudad-Distrito",
     "town": "Barrio"
+  },
+  "SelectLanguage": {
+    "selectLg": "Selecciona tu idioma"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "El gráfico muestra los puntos que has acumulado para créditos de carbono"
+  },
+  "Calendar": {
+    "nameMap": "D,L,M,X,J,V,S"
   }
 }

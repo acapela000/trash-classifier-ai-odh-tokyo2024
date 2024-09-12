@@ -4,8 +4,12 @@ import { useRouter } from "next/navigation";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl"; // Use this hook to get the current locale
 import { Select, SelectItem } from "@nextui-org/react";
+import { useTranslations } from 'next-intl';
+
 
 export default function SelectLanguage() {
+    const l = useTranslations('SelectLanguage');
+
     const router = useRouter();
     const locale = useLocale();
     const pathname = usePathname();
@@ -37,7 +41,7 @@ export default function SelectLanguage() {
 
     return (
         <Select
-            label="Select your language"
+            label={l('selectLg')}
             selectionMode="single"
             onChange={handleLanguageChange}
             selectedKeys={[locale]}>

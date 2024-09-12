@@ -45,5 +45,14 @@
     "pref": "Prefecture",
     "city-district": "City-Disrtrict",
     "town": "Town"
+  },
+  "SelectLanguage": {
+    "selectLg": "Select your language"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "The chart display the points you gather for carbon credit"
+  },
+  "Calendar": {
+    "nameMap": "EN"
   }
 }

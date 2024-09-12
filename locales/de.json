@@ -45,5 +45,14 @@
     "pref": "Bundesland",
     "city-district": "Stadt/Stadtteil",
     "town": "Ort"
+  },
+  "SelectLanguage": {
+    "selectLg": "Wählen Sie Ihre Sprache"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "Das Diagramm zeigt die Punkte an, die Sie für Kohlenstoffgutschriften gesammelt haben"
+  },
+  "Calendar": {
+    "nameMap": "S,M,D,M,D,F,S"
   }
 }

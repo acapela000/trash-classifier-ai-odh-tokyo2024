@@ -45,5 +45,14 @@
     "pref": "Estado",
     "city-district": "Cidade-Distrito",
     "town": "Bairro"
+  },
+  "SelectLanguage": {
+    "selectLg": "Selecione seu idioma"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "O gráfico exibe os pontos que você acumulou para créditos de carbono"
+  },
+  "Calendar": {
+    "nameMap": "D,S,T,Q,Q,S,S"
   }
 }

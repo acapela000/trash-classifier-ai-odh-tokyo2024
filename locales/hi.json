@@ -45,5 +45,14 @@
     "pref": "राज्य",
     "city-district": "शहर-ज़िला",
     "town": "कस्बा"
+  },
+  "SelectLanguage": {
+    "selectLg": "अपनी भाषा चुनें"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "चार्ट में आपके द्वारा एकत्र किए गए कार्बन क्रेडिट के लिए अंक प्रदर्शित होते हैं"
+  },
+  "Calendar": {
+    "nameMap": "र,सो,मं,बु,गु,शु,श"
   }
 }

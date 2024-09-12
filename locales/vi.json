@@ -45,5 +45,14 @@
     "pref": "Tỉnh/Thành phố",
     "city-district": "Quận/Huyện",
     "town": "Thị trấn"
+  },
+  "SelectLanguage": {
+    "selectLg": "Chọn ngôn ngữ của bạn"
+  },
+  "SimulatorForPointsFrReduceCO2": {
+    "simulator": "Biểu đồ hiển thị điểm bạn thu thập cho tín chỉ carbon"
+  },
+  "Calendar": {
+    "nameMap": "Thứ 7,Chủ nhật,Thứ 2,Thứ 3,Thứ 4,Thứ 5,Thứ 6"
   }
 }
