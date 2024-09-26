@@ -27,8 +27,8 @@ export const scheduleTable = sqliteTable("schedule", {
 });
 
 // Types for inserting and selecting from the tables
-export type InsertLocation = typeof locationTable.$inferInsert;
-export type SelectLocation = typeof locationTable.$inferSelect;
+export type NewLocation = typeof locationTable.$inferInsert;
+export type Location = typeof locationTable.$inferSelect;
 
-export type InsertSchedule = typeof scheduleTable.$inferInsert;
-export type SelectSchedule = typeof scheduleTable.$inferSelect;
+export type NewSchedule = typeof scheduleTable.$inferInsert;
+export type Schedule = typeof scheduleTable.$inferSelect;
