@@ -30,7 +30,7 @@
 
 @layer base {
   html {
-    @apply bg-gradient-to-t from-emerald-100 to-teal-100 transition-all duration-300;
+    @apply bg-gradient-to-t from-green-200 to-blue-100 transition-all duration-300;
   }
 }
 
