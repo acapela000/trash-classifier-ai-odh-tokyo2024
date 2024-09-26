@@ -141,7 +141,7 @@ export default function FileUploadButton({
                         ? acceptProps?.className
                         : acceptance === FILE_REJECT
                             ? rejectProps?.className
-                            : 'justify-center py-1 text-white bg-green-400 hover:bg-green-600 rounded-md'
+                            : 'justify-center py-1 text-white bg-teal-200 hover:bg-teal-400 rounded-lg'
                         }  mx-auto !h-fit w-2/3 items-center justify-center rounded-md`}
                     onPress={onButtonPress}
                     onDragEnter={onDragEnter}
@@ -154,7 +154,7 @@ export default function FileUploadButton({
                         {acceptance === FILE_REJECT ? (
                             <ShieldExclamationIcon width={50} />
                         ) : (
-                            isMobile ? <CameraIcon width={50} /> : <FolderOpenIcon className="w-[50px] h-[50px]" />
+                            isMobile ? <CameraIcon width={50} /> : <FolderOpenIcon className="w-[50px] h-[50.8px]" />
                         )}
                     </div>
                     {/* <div className='text-bold block text-sm opacity-60'>aaaaaaa</div> */}

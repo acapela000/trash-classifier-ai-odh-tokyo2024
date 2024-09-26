@@ -97,10 +97,10 @@ export function CameraCapture(props: Props) {
                             <div className="flex items-center justify-center mt-4 space-x-4">
                                 {!isMobile && (
                                     <><button
-                                        className="justify-center p-2 text-white bg-green-400 hover:bg-green-600 rounded-md"
+                                        className="justify-center p-2 text-white bg-teal-200 hover:bg-teal-400 rounded-lg"
                                         onClick={captureFromCamera}
                                     >
-                                        <CameraIcon className="w-[50px] h-[50px]" />
+                                        <CameraIcon className="w-[60px] h-[50px]" />
                                     </button></>)
                                 }
                                 <FileUploadButton
