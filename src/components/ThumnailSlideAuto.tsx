@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 
 const thumnailImgList = [
     // <img src="/thumnail-page.png" alt="thumnail image" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
-    <img src="/trash-disposal-img/japanese-recycling-symbol.jpg" alt="recycling-symbol" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
-    <img src="/trash-disposal-img/petbottle-disposal.jpeg" alt="petbottle-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
-    <img src="/trash-disposal-img/glass-disposal.jpg" alt="glass-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
-    <img src="/trash-disposal-img/papertype-disposal.jpeg" alt="papertype-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
-    <img src="/trash-disposal-img/danger-disposal.jpg" alt="danger-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
-    <img src="/trash-disposal-img/trash-disposal.jpeg" alt="trash-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />
+    <img key="1" src="/trash-disposal-img/japanese-recycling-symbol.jpg" alt="recycling-symbol" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
+    <img key="2" src="/trash-disposal-img/petbottle-disposal.jpeg" alt="petbottle-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
+    <img key="3" src="/trash-disposal-img/glass-disposal.jpg" alt="glass-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
+    <img key="4" src="/trash-disposal-img/papertype-disposal.jpeg" alt="papertype-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
+    <img key="5" src="/trash-disposal-img/danger-disposal.jpg" alt="danger-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
+    <img key="6" src="/trash-disposal-img/trash-disposal.jpeg" alt="trash-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />
 ]
 
 export default function ThumbnailSlideAuto() {
@@ -38,14 +38,6 @@ export default function ThumbnailSlideAuto() {
                                 {thumbImg}
                             </div>
                         ))}
-                        {thumnailImgList.map((thumbImg, index) => (
-                            <div
-                                className="slide flex w-[360px] items-center justify-between"
-                                key={index}
-                            >
-                                {thumbImg}
-                            </div>
-                        ))}
                     </div>
                 </div>
             ) : (
@@ -60,15 +52,6 @@ export default function ThumbnailSlideAuto() {
                             {thumbImg}
                         </div>
                     ))}
-                    {thumnailImgList.map((thumbImg, index) => (
-                        <div
-                            className="slide flex w-[800px] items-center justify-between"
-                            key={index}
-                        >
-                            {thumbImg}
-                        </div>
-                    ))}
-
                 </div>
             )};
         </div>
