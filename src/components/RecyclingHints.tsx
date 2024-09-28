@@ -1,11 +1,14 @@
 "use client";
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
+import { Video } from '@splidejs/splide-extension-video';
 
 interface Hint {
     id: string;
     text: string;
+    videoId: string
 }
+
 
 // base on the prediction result from trash classifier, give the end user suitable hints for recycles
 export default function RecyclingHints({ hints }: { hints: Hint[] }) {
@@ -16,21 +19,32 @@ export default function RecyclingHints({ hints }: { hints: Hint[] }) {
     const r = useTranslations('RecyclingHints');
     // Example usage with dummy data
     const exampleHints: Hint[] = [
-        { id: "1", text: r('hint1') },
-        { id: "2", text: r('hint2') },
-        { id: "3", text: r('hint3') },
-        { id: "4", text: r('hint4') },
-        { id: "5", text: r('hint5') },
+        { id: "1", text: r('hint1'), videoId: "4hS30hvWZX0?si=JG7r4c7kSEKGLP8S" },
+        { id: "2", text: r('hint2'), videoId: "y256XPTUZUs?si=xU7Zs6cRxtdAwOeY" },
+        { id: "3", text: r('hint3'), videoId: "pPAkASbpDrA?si=usI0T23WIIqVwGpE" },
+        { id: "4", text: r('hint4'), videoId: "" },
+        { id: "5", text: r('hint5'), videoId: "" },
     ];
 
     const App: React.FC = () => (
         <div>
             {exampleHints.map((hint) => (
-                <p key={hint.id}>{hint.text}</p>
+                <p key={hint.id}>
+                    {hint.text}
+                    {hint.videoId && (
+                        <iframe
+                            width="320"
+                            height="192"
+                            src={`https://www.youtube.com/embed/${hint.videoId}`}
+                            frameBorder="5px"
+                            allow="accelerometer; autoplay; playinline; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; referrerpolicy='strict-origin-when-cross-origin' allowfullscreen allowTransparency"
+                            allowFullScreen
+                        ></iframe>
+                    )}
+                </p>
             ))}
         </div>
     );
-
 
     // use the dummy data to show the hints
     return (
@@ -40,6 +54,16 @@ export default function RecyclingHints({ hints }: { hints: Hint[] }) {
                 {displayedHints.map((hint) => (
                     <li key={hint.id} className="text-lg">
                         {hint.text}
+                        {hint.videoId && (
+                            <iframe
+                                width="320"
+                                height="192"
+                                src={`https://www.youtube.com/embed/${hint.videoId}`}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; playinline; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; referrerpolicy='strict-origin-when-cross-origin' allowfullscreen allowTransparency"
+                                allowFullScreen
+                            ></iframe>
+                        )}
                     </li>
                 ))}
             </ul>

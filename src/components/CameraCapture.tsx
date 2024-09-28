@@ -7,6 +7,7 @@ import { CameraIcon, FolderOpenIcon } from "@heroicons/react/20/solid";
 import FileUploadButton from "./FileUploadBtn";
 import ClassifierModels from "./ClassifierModels";
 import { useTranslations } from "next-intl";
+import ThumnailSlideAuto from "./ThumnailSlideAuto";
 
 type Props = {
 }
@@ -79,15 +80,19 @@ export function CameraCapture(props: Props) {
                 <>
                     <div className="w-full max-w-sm md:p-4 mt-8 bg-white rounded-lg shadow-md">
                         <div className="relative w-full h-48">
-                            <img
-                                src={image ?? "/thumnail-page.png"}
-                                alt="Take Photo"
-                                className={`${image ? "object-scale-down" : "object-cover"
-                                    } w-full h-full rounded-t-lg`}
-                                width="320"
-                                height="192"
-                                style={{ aspectRatio: "320/192" }}
-                            />
+                            {image ? (
+                                <img
+                                    src={image ?? "/thumnail-page.png"}
+                                    alt="Take Photo"
+                                    className={`${image ? "object-scale-down" : "object-cover"
+                                        } w-full h-full rounded-t-lg`}
+                                    width="320"
+                                    height="192"
+                                    style={{ aspectRatio: "320/192" }}
+                                />
+                            ) : (
+                                <ThumnailSlideAuto />
+                            )}
                         </div>
                         <div className="md:p-4 p-2">
                             <h2 className="text-xl font-bold">{c('take-upload')}</h2>
