@@ -9,8 +9,8 @@ import { config } from "dotenv";
 // config({ path: ".env" }); // or .env.local
 
 const client = createClient({
-  url: process.env.NEXT_PUBLIC_TURSO_CONNECTION_URL! || "http://localhost:3000",
-  authToken: process.env.NEXT_PUBLIC_TURSO_AUTH_TOKEN!,
+  url: process.env.TURSO_CONNECTION_URL! || "http://localhost:3000",
+  authToken: process.env.TURSO_AUTH_TOKEN!,
 });
 console.log(process.env.TURSO_CONNECTION_URL); // Make sure this logs the correct URL
 
