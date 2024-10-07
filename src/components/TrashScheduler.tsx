@@ -118,129 +118,131 @@ export default function TrashScheduler(prop: Prop) {
     const fetchData = async () => {
         const schedules: Schedule[] = await allSchedules();
         const mappedData = dbMapping(schedules);
-        React.useEffect(() => {
-            setOption({
-                tooltip: {},
-                calendar: [
-                    {
-                        left: 'center',
-                        top: 'middle',
-                        cellSize: [46, 46],
-                        yearLabel: {
-                            show: true,
-                            formatter: date.replaceAll('-', '/'),
-                            position: 'top',
-                            fontSize: 550,
-                            margin: 70,
-                            color: 'green',
-                            fontStyle: 'sans-serif',
-                            fontWeight: 'bold',
-                        },
-                        orient: 'vertical',
-                        monthLabel: { show: false },
-                        range: date,
-                        dayLabel: {
-                            firstDay: locale == 'en' ? 0 : 1,
-                            nameMap: week
-                        },
-                    }
-                ],
-                series: [
-                    // date
-                    {
-                        type: 'scatter',
-                        coordinateSystem: 'calendar',
-                        //dimensions: [undefined, { type: 'ordinal' }],
-                        // data: dbMapping(prop.data).map((d) => {
-                        //     return [d[0], d[1]];
-                        // }, []),
-                        data: dbMapping(schedules).map((d) => {
-                            return [d[0], d[1]];
-                        }, []),
-                        symbolSize: 0,
-                        silence: true,
-                        label: {
-                            show: true,
-                            formatter: function (params: any) {
-                                const d = echarts.number.parseDate(params.value[0]);
-                                return d.getDate();
-                            },
-                            fontSize: 8,
-                        },
 
+        setOption({
+            tooltip: {},
+            calendar: [
+                {
+                    left: 'center',
+                    top: 'middle',
+                    cellSize: [46, 46],
+                    yearLabel: {
+                        show: true,
+                        formatter: date.replaceAll('-', '/'),
+                        position: 'top',
+                        fontSize: 550,
+                        margin: 70,
+                        color: 'green',
+                        fontStyle: 'sans-serif',
+                        fontWeight: 'bold',
                     },
-                    // TODO: Icons + tooltip
-                    // 1 create mock list of icons
-                    // 2 use those icons in the custom type (if not work switch to scatter)
-                    {
-                        type: 'custom',
-                        coordinateSystem: 'calendar',
-                        dimensions: [undefined, { type: 'ordinal' }],
-                        data: iconPathList,
-                        renderItem: function (params: any, api: any) {
-                            const cellPoint = api.coord(api.value(0));
-                            const cellWidth: number = (params.coordSys as any).cellWidth;
-                            const cellHeight: number = (params.coordSys as any).cellHeight;
+                    orient: 'vertical',
+                    monthLabel: { show: false },
+                    range: date,
+                    dayLabel: {
+                        firstDay: locale == 'en' ? 0 : 1,
+                        nameMap: week
+                    },
+                }
+            ],
+            series: [
+                // date
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    //dimensions: [undefined, { type: 'ordinal' }],
+                    // data: dbMapping(prop.data).map((d) => {
+                    //     return [d[0], d[1]];
+                    // }, []),
+                    data: dbMapping(schedules).map((d) => {
+                        return [d[0], d[1]];
+                    }, []),
+                    symbolSize: 0,
+                    silence: true,
+                    label: {
+                        show: true,
+                        formatter: function (params: any) {
+                            const d = echarts.number.parseDate(params.value[0]);
+                            return d.getDate();
+                        },
+                        fontSize: 8,
+                    },
 
-                            const value = api.value(1) as string;
-                            // how many icons do you have in each day for now only 1
-                            const events = 1;
-                            return {
-                                type: 'group',
-                                children: (layouts[events - 1] || []).map(function (
-                                    itemLayout,
-                                    index
-                                ) {
+                },
+                // TODO: Icons + tooltip
+                // 1 create mock list of icons
+                // 2 use those icons in the custom type (if not work switch to scatter)
+                {
+                    type: 'custom',
+                    coordinateSystem: 'calendar',
+                    dimensions: [undefined, { type: 'ordinal' }],
+                    data: iconPathList,
+                    renderItem: function (params: any, api: any) {
+                        const cellPoint = api.coord(api.value(0));
+                        const cellWidth: number = (params.coordSys as any).cellWidth;
+                        const cellHeight: number = (params.coordSys as any).cellHeight;
 
-                                    return {
-                                        type: 'image',
-                                        style: {
-                                            image: value,
-                                            x: -8,
-                                            y: -8,
-                                            width: 50,
-                                            height: 50
-                                        },
-                                        // type: 'path',
-                                        // shape: {
-                                        // pathData: value,
-                                        // x: -8,
-                                        // y: -8,
-                                        // width: 16,
-                                        // height: 16
-                                        // },
-                                        position: [
-                                            cellPoint[0] +
-                                            echarts.number.linearMap(
-                                                itemLayout[0],
-                                                [-0.5, 0.5],
-                                                [-cellWidth / 2, cellWidth / 2]
-                                            ),
-                                            cellPoint[1] +
-                                            echarts.number.linearMap(
-                                                itemLayout[1],
-                                                [-0.5, 0.5],
-                                                [-cellHeight / 2 + 20, cellHeight / 2]
-                                            )
-                                        ],
-                                    }
-                                })
-                            }
+                        const value = api.value(1) as string;
+                        // how many icons do you have in each day for now only 1
+                        const events = 1;
+                        return {
+                            type: 'group',
+                            children: (layouts[events - 1] || []).map(function (
+                                itemLayout,
+                                index
+                            ) {
+
+                                return {
+                                    type: 'image',
+                                    style: {
+                                        image: value,
+                                        x: -8,
+                                        y: -8,
+                                        width: 50,
+                                        height: 50
+                                    },
+                                    // type: 'path',
+                                    // shape: {
+                                    // pathData: value,
+                                    // x: -8,
+                                    // y: -8,
+                                    // width: 16,
+                                    // height: 16
+                                    // },
+                                    position: [
+                                        cellPoint[0] +
+                                        echarts.number.linearMap(
+                                            itemLayout[0],
+                                            [-0.5, 0.5],
+                                            [-cellWidth / 2, cellWidth / 2]
+                                        ),
+                                        cellPoint[1] +
+                                        echarts.number.linearMap(
+                                            itemLayout[1],
+                                            [-0.5, 0.5],
+                                            [-cellHeight / 2 + 20, cellHeight / 2]
+                                        )
+                                    ],
+                                }
+                            })
                         }
                     }
-                ],
-            });
-        }, [week, locale, date]);
+                }
+            ],
+        });
+    };
 
-        // Display the calendar chart with canvas-rendered icons and text in the calendar cells instead of SVG path data and text element in the group component 
-        return (
-            <ReactECharts
-                option={option}
-                // style={{ height: '800px' }}
-                style={{ width: "100%", height: "90vh" }}
-                lazyUpdate={true}
+    React.useEffect(() => {
+        fetchData();
+    }, [week, locale, date]);
 
-            />
-        )
-    }
+    // Display the calendar chart with canvas-rendered icons and text in the calendar cells instead of SVG path data and text element in the group component 
+    return (
+        <ReactECharts
+            option={option}
+            // style={{ height: '800px' }}
+            style={{ width: "100%", height: "90vh" }}
+            lazyUpdate={true}
+        />
+    );
 }

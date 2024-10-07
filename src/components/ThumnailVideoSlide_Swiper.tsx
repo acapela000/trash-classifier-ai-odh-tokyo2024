@@ -6,7 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 
 
 const thumnailImgList = [
-    <img src="/thumnail-page.png" alt="thumnail image" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
+    <img key="6" src="/thumnail-page.png" alt="thumnail image" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
     <img key="1" src="/trash-disposal-img/japanese-recycling-symbol.jpg" alt="recycling-symbol" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
     <img key="2" src="/trash-disposal-img/petbottle.jpg" alt="petbottle-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
     <img key="4" src="/trash-disposal-img/paper.jpg" alt="papertype-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />,
@@ -84,10 +84,10 @@ export default function ThumbnailVideoSlide_Swiper() {
                     ))} */}
                 </SwiperSlide>
                 <SwiperSlide className='rounded-t-lg w-[320px] h-[192px]'>
-                    <img src="/thumnail-page.png" alt="thumnail image" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />
+                    <img key="6" src="/thumnail-page.png" alt="thumnail image" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />
                 </SwiperSlide>
                 <SwiperSlide className='rounded-t-lg w-[320px] h-[192px]'>
-                <img key="1" src="/trash-disposal-img/japanese-recycling-symbol.jpg" alt="recycling-symbol" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />
+                    <img key="1" src="/trash-disposal-img/japanese-recycling-symbol.jpg" alt="recycling-symbol" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />
                 </SwiperSlide>
                 <SwiperSlide className='rounded-t-lg w-[320px] h-[192px]'>
                     <img key="2" src="/trash-disposal-img/petbottle.jpg" alt="petbottle-disposal" className='rounded-t-lg w-[350px] h-[192px] justify-between items-center md:pl-2 md:pr-2' />
@@ -105,8 +105,8 @@ export default function ThumbnailVideoSlide_Swiper() {
                     <span ref={progressContent}></span>
                 </div>
                 <div className='swiper-pagination !-bottom-6 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal'>
-                    <span className="w-[10px] h-[10px] md:pt-4 md:pb-4 swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span>
-                    <span className="w-[10px] h-[10px] swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span>
+                    <span className="w-[10px] h-[10px] md:pt-4 md:pb-4 swiper-pagination-bullet swiper-pagination-bullet-active" role="button" aria-label="Go to slide 1" aria-current="true"></span>
+                    <span className="w-[10px] h-[10px] swiper-pagination-bullet swiper-pagination-bullet-active" role="button" aria-label="Go to slide 1" aria-current="true"></span>
                 </div>
             </Swiper>
             {/* ) : (
