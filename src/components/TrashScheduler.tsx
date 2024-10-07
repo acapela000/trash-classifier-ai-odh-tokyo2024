@@ -1,48 +1,24 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
-import { CustomChart } from 'echarts/charts';
 import { CalendarComponent, TooltipComponent } from 'echarts/components';
-import { SVGRenderer } from 'echarts/renderers';
 import { CustomSeriesRenderItemReturn } from 'echarts';
 import { useLocale, useTranslations } from "next-intl";
-import { year } from "drizzle-orm/mysql-core";
-import { allSchedules } from "@/actions/FetchDb";
+import ReactECharts from 'echarts-for-react';
+import { CustomChart } from 'echarts/charts';
+import { SVGRenderer } from 'echarts/renderers';
 import { Schedule } from "@/db/schema";
+import ReactEChartsCore from 'echarts-for-react/lib/core';
+import { allSchedules } from "@/actions/FetchDb";
+import { year } from "drizzle-orm/mysql-core";
 import path from "path";
+import { data } from "@tensorflow/tfjs";
+import { db } from "@/db";
 
 
 echarts.use(
     [CustomChart, CalendarComponent, SVGRenderer, TooltipComponent]
 );
-
-// const config = {
-//     tooltip: {},
-//     calendar: [
-//         {
-//             left: 'center',
-//             top: 'middle',
-//             cellSize: [70, 70],
-//             yearLabel: { show: false },
-//             orient: 'vertical',
-//             dayLabel: {
-//                 firstDay: 1,
-//             },
-//             monthLabel: {
-//                 show: false
-//             },
-//             range: '2024-07'
-//         }
-//     ],
-//     series: {
-//         type: 'custom',
-//         coordinateSystem: 'calendar',
-//         dimensions: [undefined, { type: 'ordinal' }],
-//         data: [],
-//         renderItem: function (params: any, api: any) { return; }
-//     }
-// };
 
 const layouts = [
     [[0, 0]],
@@ -62,19 +38,65 @@ const layouts = [
         [0.25, 0.25]
     ]
 ];
-const pathes = [
-    'htM48,78c-1.105,0-2,0.896-2,2v4c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2v-4C50,78.896,49.104,78,48,78z M44.443,23.271 c0.391,0.391,0.902,0.586,1.414,0.586s1.024-0.195,1.414-0.586c0.781-0.781,0.781-2.047,0-2.828l-2.828-2.828 c-0.781-0.781-2.047-0.781-2.828,0c-0.781,0.781-0.781,2.047,0,2.828L44.443,23.271z M60,18c1.104,0,2-0.896,2-2v-4 c0-1.104-0.896-2-2-2c-1.105,0-2,0.896-2,2v4C58,17.104,58.895,18,60,18z M74.143,23.857c0.512,0,1.023-0.195,1.414-0.586 l2.828-2.828c0.781-0.781,0.781-2.047,0-2.828c-0.781-0.781-2.047-0.781-2.828,0l-2.828,2.828c-0.781,0.781-0.781,2.047,0,2.828 C73.119,23.662,73.631,23.857,74.143,23.857z M39,72c-1.105,0-2,0.896-2,2v4c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2v-4 C41,72.896,40.104,72,39,72z M84,34h-4c-1.105,0-2,0.896-2,2s0.895,2,2,2h4c1.104,0,2-0.896,2-2S85.104,34,84,34z M48,66 c-1.105,0-2,0.896-2,2v4c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2v-4C50,66.896,49.104,66,48,66z M72.556,42.187 C73.501,40.271,74,38.166,74,36c0-7.72-6.28-14-14-14c-4.601,0-8.895,2.281-11.496,6.021C48.336,28.016,48.17,28,48.001,28 c-7.664,0-14.219,5.012-16.312,12.184C31.113,40.079,30.508,40,30.001,40c-6.066,0-11,4.935-11,11s4.934,11,11,11H37v4 c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2v-4h14v4c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2v-4h7.001c6.065,0,11-4.935,11-11 C77.001,47.392,75.247,44.194,72.556,42.187z M60,26c5.514,0,10,4.486,10,10c0,1.548-0.36,3.05-1.036,4.417 C68.019,40.152,67.028,40,66.001,40c-0.508,0-1.112,0.079-1.69,0.184c-1.608-5.511-5.854-9.735-11.21-11.401 C54.939,27.03,57.397,26,60,26z M66.001,58h-36c-3.859,0-7-3.141-7-7s3.141-7,7-7c0.277,0,0.723,0.068,1.192,0.162V46 c0,1.104,0.896,2,2,2s2-0.896,2-2v-3.214C36.264,36.53,41.628,32,48.001,32c6.37,0,11.733,4.528,12.806,10.781V46 c0,1.104,0.896,2,2,2s2-0.896,2-2v-1.837C65.278,44.069,65.727,44,66.001,44c3.859,0,7,3.141,7,7S69.86,58,66.001,58z M57,72 c-1.105,0-2,0.896-2,2v4c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2v-4C59,72.896,58.104,72,57,72z',
-    'M69.24,40.488C72.173,37.886,74,34.094,74,30c0-1.104-0.896-2-2-2c-5.514,0-10-4.486-10-10c0-1.104-0.896-2-2-2 c-7.078,0-12.931,5.284-13.857,12.111c-6.848,0.737-12.533,5.488-14.454,12.072C31.112,40.079,30.507,40,30,40 c-6.065,0-11,4.935-11,11s4.935,11,11,11h36c6.065,0,11-4.935,11-11C77,46.062,73.728,41.875,69.24,40.488z M58.168,20.168 c0.934,5.985,5.675,10.728,11.66,11.664c-0.615,3.246-2.84,6.006-5.862,7.326c-2.154-5.948-7.447-10.206-13.792-11.008 C50.933,24.111,54.126,20.92,58.168,20.168z M66,58H30c-3.859,0-7-3.141-7-7s3.141-7,7-7c0.277,0,0.724,0.068,1.194,0.162V46 c0,1.104,0.896,2,2,2s2-0.896,2-2v-3.224C36.269,36.525,41.631,32,48,32c6.372,0,11.736,4.53,12.808,10.787V46 c0,1.104,0.896,2,2,2s2-0.896,2-2v-1.837C65.278,44.069,65.726,44,66,44c3.859,0,7,3.141,7,7S69.859,58,66,58z',
-    'M741.06368 733.310464c8.075264-29.262438 20.615373-40.632422 14.64105-162.810061C966.089728 361.789952 967.93897 72.37847 967.855002 54.693683c0.279347-0.279347 0.418509-0.419533 0.418509-0.419533s-0.17705-0.00512-0.428749-0.00512c0-0.251699 0-0.428749 0-0.428749s-0.139162 0.14633-0.418509 0.425677c-17.695744-0.083866-307.10784 1.760051-515.833958 212.142592-122.181632-5.984256-133.55305 6.563533-162.815693 14.644531C235.35063 295.798886 103.552614 436.975309 90.630758 486.076621c-12.921856 49.105408 39.634227 56.859034 58.579558 58.581197 18.953421 1.724314 121.471386-9.475789 130.09111 4.309094 0 0 16.367411 11.200102 17.226035 41.346662 0.850432 29.796659 15.173222 71.354163 37.123994 97.267302-0.028672 0.027648-0.05632 0.054272-0.083866 0.074752 0.158618 0.13097 0.316211 0.261939 0.474829 0.390861 0.129946 0.149402 0.261939 0.319283 0.393011 0.468685 0.019456-0.019456 0.04608-0.049152 0.075776-0.075674 25.918362 21.961216 67.477504 36.272128 97.269248 37.122458 30.149837 0.859546 41.354547 17.234534 41.354547 17.234534 13.779354 8.608051 2.583962 111.122842 4.302131 130.075546 1.727386 18.95168 9.477222 71.498445 58.579558 58.576077C585.12896 918.526771 726.311117 786.734182 741.06368 733.310464zM595.893555 426.206003c-39.961702-39.965184-39.961702-104.75991 0-144.720077 39.970918-39.96928 104.768307-39.96928 144.730112 0 39.970918 39.960064 39.970918 104.75479 0 144.720077C700.661862 466.171187 635.864474 466.171187 595.893555 426.206003zM358.53312 769.516032c-31.923302-4.573184-54.890394-18.410291-71.41847-35.402342-16.984474-16.526438-30.830387-39.495475-35.405824-71.420621-4.649062-28.082586-20.856832-41.167565-38.76649-38.763827-17.906586 2.40681-77.046886 66.714419-80.857805 89.475891-3.80887 22.752154 29.271859 12.081152 46.424166 27.654861 17.151283 15.590093-2.139853 61.93664-14.733107 86.845952-6.441984 12.735078-10.289766 26.42176-4.22953 33.76087 7.346586 6.070272 21.03593 2.222592 33.769472-4.220109 24.912384-12.585677 71.258829-31.872922 86.842368-14.731469 15.583539 17.160806 4.911002 50.229965 27.674419 46.419251 22.754099-3.807744 87.065395-62.946611 89.466163-80.85248C399.70857 790.374093 386.627072 774.166938 358.53312 769.516032z',
-    'M848.794624 939.156685 571.780416 939.156685 571.780416 653.17123l341.897539 0 0 221.100654C913.677926 909.960704 884.482867 939.156685 848.794624 939.156685zM571.780403 318.743552c-11.861606-3.210138-31.443354-8.36864-39.829709-16.176435-0.596582-0.561766-1.016218-1.246413-1.613824-1.841971-0.560845 0.596582-1.016218 1.280205-1.613824 1.841971-8.386355 7.807795-15.96631 12.965274-27.827917 16.176435l0 263.544325L141.030675 582.287877 141.030675 355.202884c0-35.687834 29.195059-64.882688 64.883302-64.882688l150.649125 0c-16.984474-9.525965-32.846438-20.56233-46.111027-32.932045-60.250624-56.144691-71.129907-137.062605-24.283034-180.767027 19.615539-18.264986 46.252237-27.124736 75.026739-27.124736 39.933133 0 83.972915 17.070797 118.995968 49.706086 20.353331 18.983322 37.722624 43.405619 50.145075 69.056819 12.457267-25.6512 29.791744-50.074419 50.180915-69.056819 35.022029-32.63529 79.062835-49.706086 118.994944-49.706086 28.74071 0 55.410176 8.860774 75.025715 27.124736 46.882611 43.704422 35.96759 124.622336-24.283034 180.767027-13.264589 12.368691-29.127578 23.40608-46.111027 32.932045l144.649234 0c35.688243 0 64.882278 29.195981 64.882278 64.882688l0 227.084948L571.780416 582.287833 571.780416 318.743508zM435.064218 147.625267c-21.476966-19.965747-49.094144-31.913882-73.868288-31.913882-7.404954 0-21.125018 1.211597-29.863322 9.386803-2.000691 1.824563-8.070144 7.439462-8.070144 21.369754 0 15.650406 8.492749 40.24873 32.319386 62.477926 29.124506 27.12576 77.202432 47.601152 111.76704 47.601152 12.176794 0 16.492237-2.666701 16.527053-2.702541C489.524736 242.54505 475.664486 185.453773 435.064218 147.625267zM577.78135 254.790963c0 0 0.034816-0.034816 0.069632-0.034816 0.807424 0 5.50871 1.790771 15.509914 1.790771 34.564608 0 82.64151-20.47529 111.76704-47.601152 23.826637-22.229299 32.283546-46.810112 32.283546-62.442189 0-13.930291-6.033613-19.562496-8.035328-21.404467-8.77312-8.17623-22.457344-9.386803-29.864346-9.386803-24.808038 0-52.390298 11.948134-73.867264 31.913882C585.325466 185.208218 571.358822 241.73865 577.78135 254.790963zM500.89513 939.156685 205.914017 939.156685c-35.688243 0-64.883302-29.195981-64.883302-64.883712L141.030714 653.17123l359.864462 0L500.895177 939.15666z'
-];
+
+const value = [
+    'https://thumb.ac-illust.com/b4/b4cfc91f9ac36a6816af594e8a6bc129_t.jpeg',
+    'https://img.freepik.com/premium-vector/vector-logo-badge-icon-plastic-waste-reusable-product-sign-design-symbol-sorting-garbages_163983-1816.jpg'
+]
+
 const colors = ['#c4332b', '#16B644', '#6862FD', '#FDC763'];
 
 const directWeekLocale: string[] = ['en', 'zh'];
 
+const dateList = [
+    ['2024-9-1', '初四'],
+    ['2024-9-2', '初五'],
+    ['2024-9-3', '初六'],
+    ['2024-9-4', '初七'],
+    ['2024-9-5', '初八', '小寒'],
+    ['2024-9-6', '初九'],
+    ['2024-9-7', '初十'],
+]
+
+const iconPathList = [
+    ['2024-9-6', value[1]],
+    ['2024-9-7', value[0]],
+]
+
 type Prop = {
     data: Schedule[]
 }
+
+// mapping database from "schema.ts" to the calendar chart data format
+const dbMapping = (data: Schedule[]) => {
+    return data.map((d) => {
+        return [
+            `2024-${d.month}-${d.day}`, // Add the year to the date
+            d.event || 'default' // Ensure there's a value for the event
+        ];
+    });
+};
+//     return data.map((d) => {
+//         // Assuming you have the year or need a placeholder, you can use "2024" as the year if it's for this year
+//         const year = '2024';
+//         const month = d.month.toString().padStart(2, '0'); // Ensure two digits for the month
+//         const day = d.day.toString().padStart(2, '0');     // Ensure two digits for the day
+
+//         return [
+//             `${year}-${month}-${day}`,  // Format as YYYY-MM-DD
+//             d.event || 'default'        // Use event or default
+//         ];
+//     });
+// };
+
+// const dbMapping = (data: Schedule[]) => {
+//     return data.map((d) => {
+//         return [
+//             `${d.month}-${d.day}`,
+//             d.event || 'default'
+//         ]
+//     });
+// }
 
 export default function TrashScheduler(prop: Prop) {
     console.log(prop.data);
@@ -90,202 +112,135 @@ export default function TrashScheduler(prop: Prop) {
 
     const date = React.useMemo(() => {
         const now = new Date();
-        return `${now.getFullYear()}/${(now.getMonth() + 1).toString()}`;
+        return `${now.getFullYear()}-${(now.getMonth() + 1).toString()}`;
     }, [])
 
-    function getVirtulData(year: any) {
-        const now = new Date();
-        year = year || now.getFullYear().toString();
-        let date = +echarts.number.parseDate(year + '-01-01');
-        let end = +echarts.number.parseDate(+year + 1 + '-01-01');
-        let dayTime = 3600 * 24 * 1000;
-        let data = [];
-        for (let time = date; time < end; time += dayTime) {
-            let items = [];
-            let eventCount = Math.round(Math.random() * pathes.length);
-            for (let i = 0; i < eventCount; i++) {
-                items.push(Math.round(Math.random() * (pathes.length - 1)));
-            }
-            data.push([echarts.format.formatTime('yyyy-MM-dd', time), items.join('|')]);
-        }
-        return data;
-    }
+    const fetchData = async () => {
+        const schedules: Schedule[] = await allSchedules();
+        const mappedData = dbMapping(schedules);
+        React.useEffect(() => {
+            setOption({
+                tooltip: {},
+                calendar: [
+                    {
+                        left: 'center',
+                        top: 'middle',
+                        cellSize: [46, 46],
+                        yearLabel: {
+                            show: true,
+                            formatter: date.replaceAll('-', '/'),
+                            position: 'top',
+                            fontSize: 550,
+                            margin: 70,
+                            color: 'green',
+                            fontStyle: 'sans-serif',
+                            fontWeight: 'bold',
+                        },
+                        orient: 'vertical',
+                        monthLabel: { show: false },
+                        range: date,
+                        dayLabel: {
+                            firstDay: locale == 'en' ? 0 : 1,
+                            nameMap: week
+                        },
+                    }
+                ],
+                series: [
+                    // date
+                    {
+                        type: 'scatter',
+                        coordinateSystem: 'calendar',
+                        //dimensions: [undefined, { type: 'ordinal' }],
+                        // data: dbMapping(prop.data).map((d) => {
+                        //     return [d[0], d[1]];
+                        // }, []),
+                        data: dbMapping(schedules).map((d) => {
+                            return [d[0], d[1]];
+                        }, []),
+                        symbolSize: 0,
+                        silence: true,
+                        label: {
+                            show: true,
+                            formatter: function (params: any) {
+                                const d = echarts.number.parseDate(params.value[0]);
+                                return d.getDate();
+                            },
+                            fontSize: 8,
+                        },
 
-    const getIconPath = (day: number) => {
-        // Generate SVG path data for the icon based on the day of the month
-        // This is just a placeholder - replace with your actual icon generation logic
-        return 'M848.794624 939.156685 571.780416 939.156685 571.780416 653.17123l341.897539 0 0 221.100654C913.677926 909.960704 884.482867 939.156685 848.794624 939.156685zM571.780403 318.743552c-11.861606-3.210138-31.443354-8.36864-39.829709-16.176435-0.596582-0.561766-1.016218-1.246413-1.613824-1.841971-0.560845 0.596582-1.016218 1.280205-1.613824 1.841971-8.386355 7.807795-15.96631 12.965274-27.827917 16.176435l0 263.544325L141.030675 582.287877 141.030675 355.202884c0-35.687834 29.195059-64.882688 64.883302-64.882688l150.649125 0c-16.984474-9.525965-32.846438-20.56233-46.111027-32.932045-60.250624-56.144691-71.129907-137.062605-24.283034-180.767027 19.615539-18.264986 46.252237-27.124736 75.026739-27.124736 39.933133 0 83.972915 17.070797 118.995968 49.706086 20.353331 18.983322 37.722624 43.405619 50.145075 69.056819 12.457267-25.6512 29.791744-50.074419 50.180915-69.056819 35.022029-32.63529 79.062835-49.706086 118.994944-49.706086 28.74071 0 55.410176 8.860774 75.025715 27.124736 46.882611 43.704422 35.96759 124.622336-24.283034 180.767027-13.264589 12.368691-29.127578 23.40608-46.111027 32.932045l144.649234 0c35.688243 0 64.882278 29.195981 64.882278 64.882688l0 227.084948L571.780416 582.287833 571.780416 318.743508zM435.064218 147.625267c-21.476966-19.965747-49.094144-31.913882-73.868288-31.913882-7.404954 0-21.125018 1.211597-29.863322 9.386803-2.000691 1.824563-8.070144 7.439462-8.070144 21.369754 0 15.650406 8.492749 40.24873 32.319386 62.477926 29.124506 27.12576 77.202432 47.601152 111.76704 47.601152 12.176794 0 16.492237-2.666701 16.527053-2.702541C489.524736 242.54505 475.664486 185.453773 435.064218 147.625267zM577.78135 254.790963c0 0 0.034816-0.034816 0.069632-0.034816 0.807424 0 5.50871 1.790771 15.509914 1.790771 34.564608 0 82.64151-20.47529 111.76704-47.601152 23.826637-22.229299 32.283546-46.810112 32.283546-62.442189 0-13.930291-6.033613-19.562496-8.035328-21.404467-8.77312-8.17623-22.457344-9.386803-29.864346-9.386803-24.808038 0-52.390298 11.948134-73.867264 31.913882C585.325466 185.208218 571.358822 241.73865 577.78135 254.790963zM500.89513 939.156685 205.914017 939.156685c-35.688243 0-64.883302-29.195981-64.883302-64.883712L141.030714 653.17123l359.864462 0L500.895177 939.15666z'
-
-        // return pathes.map(path => {
-        //     return path;
-        // })[day % pathes.length];
-    }
-
-    const getIconColor = (day: number) => {
-        // Generate a color for the icon based on the day of the month
-        // This is just a placeholder - replace with your actual color generation logic
-        return `hsl(${day * 12}, 70%, 50%)`;
-    };
-
-    React.useEffect(() => {
-        setOption({
-            tooltip: {},
-            calendar: [
-                {
-                    left: 'center',
-                    top: 'middle',
-                    cellSize: [45, 45],
-                    yearLabel: {
-                        show: true,
-                        position: 'top',
-                        fontSize: 50,
-                        formatter: date,
-                        margin: 70,
-                        color: 'green',
-                        fontStyle: 'sans-serif',
-                        fontWeight: 'bold',
                     },
-                    orient: 'vertical',
-                    monthLabel: { show: false },
-                    range: date,
-                    dayLabel: {
-                        firstDay: locale == 'en' ? 0 : 1,
-                        nameMap: week
-                    },
-                }
-            ],
-            series: [
-                {
-                    type: 'custom',
-                    coordinateSystem: 'calendar',
-                    dimensions: [undefined, { type: 'ordinal' }],
-                    data: [],
-                    renderItem: function (params: any, api: any) {
-                        const cellPoint = api.coord(api.value(0));
-                        // const cellWidth: number = (params.coordSys as any).cellWidth;
-                        // const cellHeight: number = (params.coordSys as any).cellHeight;
-                        const cellWidth = api.size([1, 0])[0];
-                        const cellHeight = api.size([0, 1])[1];
+                    // TODO: Icons + tooltip
+                    // 1 create mock list of icons
+                    // 2 use those icons in the custom type (if not work switch to scatter)
+                    {
+                        type: 'custom',
+                        coordinateSystem: 'calendar',
+                        dimensions: [undefined, { type: 'ordinal' }],
+                        data: iconPathList,
+                        renderItem: function (params: any, api: any) {
+                            const cellPoint = api.coord(api.value(0));
+                            const cellWidth: number = (params.coordSys as any).cellWidth;
+                            const cellHeight: number = (params.coordSys as any).cellHeight;
 
-                        const value = api.value(1) as string;
-                        const events = value && value.split('|');
-
-                        if (isNaN(cellPoint[0]) || isNaN(cellPoint[1])) {
-                            return;
-                        }
-
-                        const group: CustomSeriesRenderItemReturn = {
-                            type: 'group',
-                            children:
-                                (layouts[events.length - 1] || []).map(function (
+                            const value = api.value(1) as string;
+                            // how many icons do you have in each day for now only 1
+                            const events = 1;
+                            return {
+                                type: 'group',
+                                children: (layouts[events - 1] || []).map(function (
                                     itemLayout,
                                     index
                                 ) {
+
                                     return {
-                                        type: 'group',
-                                        children: [
-                                            {
-                                                type: 'path',
-                                                shape: {
-                                                    pathData: getIconPath(cellPoint),
-                                                    x: -cellWidth / 2,
-                                                    y: -cellHeight / 2,
-                                                    width: cellWidth,
-                                                    height: cellHeight,
-                                                },
-                                                style: {
-                                                    fill: getIconColor(cellPoint),
-                                                    // Add more style properties here to customize the icon
-                                                    fontSize: 14,  // For example, to change the font size
-                                                    fontWeight: 'bold',  // For example, to make the text bold
-                                                    shadowColor: 'rgba(0, 0, 0, 0.5)',
-                                                    shadowBlur: 10,
-
-
-                                                },
-                                            },
-                                            {
-                                                type: 'text',
-                                                style: {
-                                                    text: cellPoint.toString(''),
-                                                    x: cellWidth / 2,
-                                                    y: cellHeight / 2,
-                                                    textAlign: 'center',
-                                                    textVerticalAlign: 'middle',
-                                                    // Add more style properties here to customize the text
-                                                    fontSize: 14,  // For example, to change the font size
-                                                    fontWeight: 'bold',  // For example, to make the text bold
-                                                    fill: '#000',  // For example, to change the text color
-                                                },
-                                            },
+                                        type: 'image',
+                                        style: {
+                                            image: value,
+                                            x: -8,
+                                            y: -8,
+                                            width: 50,
+                                            height: 50
+                                        },
+                                        // type: 'path',
+                                        // shape: {
+                                        // pathData: value,
+                                        // x: -8,
+                                        // y: -8,
+                                        // width: 16,
+                                        // height: 16
+                                        // },
+                                        position: [
+                                            cellPoint[0] +
+                                            echarts.number.linearMap(
+                                                itemLayout[0],
+                                                [-0.5, 0.5],
+                                                [-cellWidth / 2, cellWidth / 2]
+                                            ),
+                                            cellPoint[1] +
+                                            echarts.number.linearMap(
+                                                itemLayout[1],
+                                                [-0.5, 0.5],
+                                                [-cellHeight / 2 + 20, cellHeight / 2]
+                                            )
                                         ],
-                                    };
-                                },
-                                ) || [],
-                        };
-                        return group;
+                                    }
+                                })
+                            }
+                        }
                     }
-                }
-            ],
-        });
-        //                             return {
-        //                                 type: 'path',
-        //                                 shape: {
-        //                                     pathData: pathes[+events[index]],
-        //                                     x: -8,
-        //                                     y: -8,
-        //                                     width: 16,
-        //                                     height: 16
-        //                                 },
-        //                                 position: [
-        //                                     cellPoint[0] +
-        //                                     echarts.number.linearMap(
-        //                                         itemLayout[0],
-        //                                         [-0.5, 0.5],
-        //                                         [-cellWidth / 2, cellWidth / 2]
-        //                                     ),
-        //                                     cellPoint[1] +
-        //                                     echarts.number.linearMap(
-        //                                         itemLayout[1],
-        //                                         [-0.5, 0.5],
-        //                                         [-cellHeight / 2 + 20, cellHeight / 2]
-        //                                     )
-        //                                 ],
-        //                                 style: api.style({
-        //                                     fill: colors[+events[index]]
-        //                                 })
-        //                             };
-        //                         }) || []
-        //                 };
+                ],
+            });
+        }, [week, locale, date]);
 
-        //                 group.children.push({
-        //                     type: 'text',
-        //                     style: {
-        //                         x: cellPoint[0],
-        //                         y: cellPoint[1] - cellHeight / 2 + 15,
-        //                         text: echarts.format.formatTime('dd', api.value(0)),
-        //                         fill: '#777',
-        //                         textFont: api.font({ fontSize: 14 })
-        //                     }
-        //                 });
+        // Display the calendar chart with canvas-rendered icons and text in the calendar cells instead of SVG path data and text element in the group component 
+        return (
+            <ReactECharts
+                option={option}
+                // style={{ height: '800px' }}
+                style={{ width: "100%", height: "90vh" }}
+                lazyUpdate={true}
 
-        //                 return group;
-        //             },
-        //             // dimensions: [undefined, { type: 'ordinal' }],
-        //             // data: getVirtulData(year)
-        //         }]
-        // });
-    }, [week, locale, date]);
-
-    // Display the calendar chart
-    return (
-        <ReactEChartsCore
-            echarts={echarts}
-            option={option}
-            lazyUpdate={true}
-            style={{ width: "100%", height: "90vh" }}
-        />
-    );
+            />
+        )
+    }
 }
-
-

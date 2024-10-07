@@ -29,7 +29,7 @@ export default function RecyclingHints({ hints }: { hints: Hint[] }) {
     const App: React.FC = () => (
         <div>
             {exampleHints.map((hint) => (
-                <p key={hint.id}>
+                <p key={hint.id} className="md:pt-4 md:pb-4">
                     {hint.text}
                     {hint.videoId && (
                         <iframe
@@ -48,7 +48,7 @@ export default function RecyclingHints({ hints }: { hints: Hint[] }) {
 
     // use the dummy data to show the hints
     return (
-        <div className="flex flex-col w-full max-w-4xl">
+        <div className="flex flex-col w-full max-w-4xl md:pb-8">
             <h2 className="text-2xl font-bold">{r('recyclingHints')}</h2>
             <ul className="list-disc pl-8">
                 {displayedHints.map((hint) => (

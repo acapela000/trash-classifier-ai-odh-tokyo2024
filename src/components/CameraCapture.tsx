@@ -8,6 +8,7 @@ import FileUploadButton from "./FileUploadBtn";
 import ClassifierModels from "./ClassifierModels";
 import { useTranslations } from "next-intl";
 import ThumnailSlideAuto from "./ThumnailSlideAuto";
+import ThumnailVideoSlide_Swiper from "./ThumnailVideoSlide_Swiper";
 
 type Props = {
 }
@@ -91,12 +92,12 @@ export function CameraCapture(props: Props) {
                                     style={{ aspectRatio: "320/192" }}
                                 />
                             ) : (
-                                <ThumnailSlideAuto />
+                                <ThumnailVideoSlide_Swiper />
                             )}
                         </div>
                         <div className="md:p-4 p-2">
-                            <h2 className="text-xl font-bold">{c('take-upload')}</h2>
-                            <p className="mt-2 text-gray-600">
+                            <h2 className="text-xl font-bold text-center items-center">{c('take-upload')}</h2>
+                            <p className="mt-2 text-gray-600 text-center items-center">
                                 {c('takePhoto')}
                             </p>
                             <div className="flex items-center justify-center mt-4 space-x-4">

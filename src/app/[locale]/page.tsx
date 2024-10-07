@@ -16,14 +16,17 @@ export default async function Home() {
           sizes="200px"
         />
       </head>
-      <div className="w-full flex min-h-screen flex-col items-center justify-between p-8 md:p-24">
+      <div className="w-full flex min-h-screen flex-col items-center justify-center md:p-8 md:p-24 md:pl-8 md:pr-8">
+        <div className='z-10 w-full max-w-5xl text-center items-center justify-center text-lg'>
+          <p className='text-center text-lg'>Welcome to Trash classifier with AI!</p>
+        </div>
         <div className="z-10 w-full max-w-5xl items-center justify-between text-sm lg:flex">
           <section className='w-full min-h-[100vh]'>
             <CameraCapture />
           </section>
         </div>
         <div>
-          <section className='z-10 w-full max-w-5xl items-center justify-between text-sm lg:flex md:pt-4 md:pb-6'>
+          <section className='z-10 w-full max-w-5xl items-center justify-between text-sm lg:flex md:pt-4 md:pb-8'>
             <RecyclingHints hints={[]} />
           </section>
         </div>
