@@ -4,7 +4,7 @@ import MapComponent from "@/components/DrawOnMap";
 import FormInputZipcode from "@/components/FormInputZipcode";
 
 interface Props {
-    cf: any,
+    cf?: any,
 }
 
 export default function MapWrapper({ cf }: Props) {

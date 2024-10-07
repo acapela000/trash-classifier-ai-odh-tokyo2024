@@ -6,13 +6,13 @@ import { Input, Button } from '@nextui-org/react';
 import { useTranslations } from 'next-intl';
 
 interface Props {
-    cf: any,
+    cf?: any,
     setLocation: any,
     location: { latitude: number, longitude: number },
 }
 
 export default function FormInputZipcode({ cf, setLocation, location }: Props) {
-    const [zipcode, setZipcode] = useState((cf.postalCode as string).replace('-', ''));
+    const [zipcode, setZipcode] = useState((cf?.postalCode as string).replace('-', '') ?? '');
     const [apiRes, setApiRes] = useState<any>('');
     // const [location, setLocation] = useState<any>('');
     // const [location, setLocation] = useState<{ latitude: number, longitude: number }>({ latitude: 0, longitude: 0 });
