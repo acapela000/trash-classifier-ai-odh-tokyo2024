@@ -130,10 +130,12 @@ export default function TrashScheduler(prop: Prop) {
   }, []); // don't add fetchData here otherwise it will be called infinitely
 
   return (
-    <ReactECharts
-      option={option}
-      style={{ width: '100%', height: '90vh' }}
-      lazyUpdate={true}
-    />
+    <>
+      <ReactECharts
+        option={option}
+        style={{ width: '100%', height: '90vh' }}
+        lazyUpdate={true}
+      />
+    </>
   );
 }

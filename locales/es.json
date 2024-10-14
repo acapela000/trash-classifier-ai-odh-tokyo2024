@@ -53,6 +53,7 @@
     "simulator": "El gráfico muestra los puntos que has acumulado para créditos de carbono"
   },
   "Calendar": {
-    "nameMap": "D,L,M,X,J,V,S"
+    "nameMap": "D,L,M,X,J,V,S",
+    "week-days": "Dom,Lun,Mar,Mie,Jue,Vie,Sab"
   }
 }
