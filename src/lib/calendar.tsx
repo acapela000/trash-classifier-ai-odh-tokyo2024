@@ -17,18 +17,6 @@ export enum TrashClassification {
   CAN = 5,
 }
 
-export function GetTrashColor(type: TrashClassification) {
-  return {
-    'bg-purple-200 text-purple-700':
-      type === TrashClassification.PLASTIC ||
-      type === TrashClassification.RAW_TRASH,
-    'bg-green-200 text-green-700': type === TrashClassification.PET,
-    'bg-red-200 text-red-700': type === TrashClassification.GLASS,
-    'bg-amber-200 text-amber-700': type === TrashClassification.CARDBOARD,
-    'bg-blue-200 text-blue-700': type === TrashClassification.CAN,
-  };
-}
-
 export function GetTrashIcon(trash: TrashClassification): React.ReactNode {
   switch (trash) {
     case TrashClassification.PLASTIC:
