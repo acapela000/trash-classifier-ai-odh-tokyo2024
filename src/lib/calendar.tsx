@@ -46,6 +46,28 @@ export function usePrevious<T>(value: T) {
   return tuple[0] || value;
 }
 
+export function GetTrashName(
+  trash: TrashClassification,
+  t: (key: string) => string
+): string {
+  switch (trash) {
+    case TrashClassification.PLASTIC:
+      return t('plastic');
+    case TrashClassification.PET:
+      return t('petbottle');
+    case TrashClassification.GLASS:
+      return t('glass');
+    case TrashClassification.CARDBOARD:
+      return t('carton-paper');
+    case TrashClassification.RAW_TRASH:
+      return t('raw-trash');
+    case TrashClassification.CAN:
+      return t('can');
+    default:
+      return '';
+  }
+}
+
 // START MOCK DATA
 // Icons per day
 const MockIconList: [string, TrashClassification[]][] = [

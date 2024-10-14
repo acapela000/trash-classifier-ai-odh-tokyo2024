@@ -18,7 +18,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import { GetMockTrash, usePrevious } from '@/lib/calendar';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid';
-import { ExpandedCard } from './ExtendedCard';
+import { Card } from './Card';
 import { getLocale } from '@/lib/utils';
 
 const variants = {
@@ -181,7 +181,7 @@ export function Calendar() {
               key={currentMonth}
             >
               {days.map((day, index) => (
-                <ExpandedCard
+                <Card
                   key={index}
                   day={day}
                   today={today}

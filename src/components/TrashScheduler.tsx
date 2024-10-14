@@ -1,3 +1,4 @@
+/*
 'use client';
 import React from 'react';
 import * as echarts from 'echarts/core';
@@ -139,3 +140,4 @@ export default function TrashScheduler(prop: Prop) {
     </>
   );
 }
+*/
