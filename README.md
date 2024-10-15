@@ -34,3 +34,28 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Migrations
+
+First we need to generate the migrations file. To do this, run the following command:
+
+```bash
+$ npm run db:generate
+```
+
+This will generate a new file in the `migrations` folder. You can then run the migrations with the following command:
+
+```bash
+$ npm run db:migrate
+```
+
+Make sure to run the db before running the migrations. You can do this by running the following command:
+
+```bash
+# if you don't have the database file, create an empty file by:
+$ touch .db/database.sqlite
+
+# Now you can run turso local database by:
+$ npm run db:start
+```
+

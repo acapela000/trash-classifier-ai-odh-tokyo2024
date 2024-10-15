@@ -12,6 +12,8 @@ if (process.env.NODE_ENV === "development") {
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    exclude: ['migrations', 'drizzle.config.ts'],
+};
 
 export default withNextIntl(nextConfig);
