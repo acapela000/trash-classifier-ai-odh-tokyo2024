@@ -53,6 +53,7 @@
     "simulator": "图表显示您收集的碳信用积分"
   },
   "Calendar": {
+    "week-days": "日,一,二,三,四,五,六",
     "nameMap": "ZH"
   }
 }

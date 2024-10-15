@@ -53,6 +53,7 @@
     "simulator": "The chart display the points you gather for carbon credit"
   },
   "Calendar": {
+    "week-days": "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
     "nameMap": "EN"
   }
 }

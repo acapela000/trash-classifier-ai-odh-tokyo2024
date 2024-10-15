@@ -53,6 +53,7 @@
     "simulator": "Das Diagramm zeigt die Punkte an, die Sie für Kohlenstoffgutschriften gesammelt haben"
   },
   "Calendar": {
+    "week-days": "So,Mo,Di,Mi,Do,Fr,Sa",
     "nameMap": "S,M,D,M,D,F,S"
   }
 }

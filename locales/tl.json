@@ -53,6 +53,7 @@
     "simulator": "Ipinapakita ng tsart ang mga puntos na iyong nakukuha para sa carbon credit"
   },
   "Calendar": {
+    "week-days": "Linggo,Lunes,Martes,Miyerkules,Huwebes,Biyernes,Sabado",
     "nameMap": "L,L,M,M,H,B,S"
   }
 }
