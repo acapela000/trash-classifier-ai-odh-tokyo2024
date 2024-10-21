@@ -44,14 +44,14 @@ export function Card({ day, today, firstDayOfMonth, trash }: Props) {
       >
         <div
           className={cn({
-            'm-1 h-fit min-h-full rounded-md bg-zinc-50 p-1 md:p-2': true,
-            'bg-zinc-200': isSameDay(day, today),
+            'm-1 h-fit min-h-full rounded-md bg-emerald-50 p-1 md:p-2': true,
+            'bg-emerald-200': isSameDay(day, today),
             'text-white': isSameDay(day, today),
-            'text-gray-300': !isSameMonth(day, firstDayOfMonth),
-            'text-gray-700': isSameMonth(day, firstDayOfMonth),
+            'text-emerald-300': !isSameMonth(day, firstDayOfMonth),
+            'text-emerald-700': isSameMonth(day, firstDayOfMonth),
           })}
         >
-          <div className='relative left-0 top-0 h-8 w-8 items-center justify-center rounded-full text-center text-tiny'>
+          <div className='relative left-0 top-0 h-8 w-8 items-center justify-center rounded-full text-center text-xl'>
             {format(day, 'd')}
           </div>
           <div
