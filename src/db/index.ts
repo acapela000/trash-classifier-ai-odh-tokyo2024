@@ -1,8 +1,8 @@
-import { drizzle } from "drizzle-orm/libsql";
-import { createClient } from "@libsql/client";
+import { drizzle } from 'drizzle-orm/libsql';
+import { createClient } from '@libsql/client';
 
 const client = createClient({
-  url: process.env.TURSO_CONNECTION_URL! || "http://localhost:8080",
+  url: process.env.TURSO_CONNECTION_URL! || 'http://localhost:8080',
   authToken: process.env.TURSO_AUTH_TOKEN!,
 });
 

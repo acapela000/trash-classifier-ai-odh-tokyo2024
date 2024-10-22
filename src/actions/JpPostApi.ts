@@ -1,18 +1,18 @@
-import axios from "axios";
+import axios from 'axios';
 
 interface JpPostApi {
-  prefs: "",
-  cities: "",
-  postalcode: "",
-  towns: ""
-};
+  prefs: '';
+  cities: '';
+  postalcode: '';
+  towns: '';
+}
 
 export function callJpPostApi(postalCode: string) {
   return axios({
-    method: "GET",
+    method: 'GET',
     url: `https://postal-codes-jp.azurewebsites.net/api/PostalCodes/${postalCode}`,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   })
     .then(function (response) {

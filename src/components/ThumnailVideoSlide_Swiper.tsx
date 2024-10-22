@@ -194,4 +194,3 @@ export default function ThumbnailVideoSlide_Swiper() {
     </div>
   );
 }
-

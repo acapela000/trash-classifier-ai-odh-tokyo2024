@@ -1,22 +1,22 @@
-import { getRequestConfig } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { getRequestConfig } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
 export const locales = [
-  "ja",
-  "en",
-  "vi",
-  "zh",
-  "es",
-  "ru",
-  "fr",
-  "ko",
-  "it",
-  "pt",
-  "de",
-  "ne",
-  "id",
-  "tl",
-  "hi",
+  'ja',
+  'en',
+  'vi',
+  'zh',
+  'es',
+  'ru',
+  'fr',
+  'ko',
+  'it',
+  'pt',
+  'de',
+  'ne',
+  'id',
+  'tl',
+  'hi',
 ] as const;
 
 export default getRequestConfig(async ({ locale }) => {

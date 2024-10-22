@@ -1,6 +1,6 @@
-import { scheduleTable, locationTable } from "@/db/schema";
-import { db } from "@/db";
-import { eq } from "drizzle-orm";
+import { scheduleTable, locationTable } from '@/db/schema';
+import { db } from '@/db';
+import { eq } from 'drizzle-orm';
 
 export async function allSchedules() {
   return await db.select().from(scheduleTable).execute();
