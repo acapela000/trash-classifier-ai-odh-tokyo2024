@@ -13,7 +13,7 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    exclude: ['migrations', 'drizzle.config.ts'],
+    exclude: ['migrations', 'drizzle.config.ts', 'ai'],
 };
 
 export default withNextIntl(nextConfig);

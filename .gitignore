@@ -9,6 +9,7 @@
 .env.local
 
 .db/
+line-notify.rest
 
 # testing
 /coverage
