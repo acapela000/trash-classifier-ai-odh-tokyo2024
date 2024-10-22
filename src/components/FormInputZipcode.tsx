@@ -13,7 +13,7 @@ interface Props {
 
 export default function FormInputZipcode({ cf, setLocation, location }: Props) {
   const [zipcode, setZipcode] = useState(
-    (cf?.postalCode as string).replace('-', '') ?? ''
+    ((cf?.postalCode as string) ?? '1000005').replace('-', '') ?? ''
   );
   const [apiRes, setApiRes] = useState<any>('');
   // const [location, setLocation] = useState<any>('');
