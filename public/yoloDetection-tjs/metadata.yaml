@@ -1,0 +1,20 @@
+description: Ultralytics YOLO11n model trained on /content/drive/MyDrive/dataset/config.yaml
+author: Ultralytics
+date: '2024-10-19T07:59:40.993768'
+version: 8.3.17
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 640
+- 640
+names:
+  0: can
+  1: petbottle
+  2: plastic
+  3: glass
+  4: raw-trash
+  5: paper-carton
+  6: nonburnable
