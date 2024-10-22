@@ -18,9 +18,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "~/*": ["./*"]
+    },
   },
-  "include": ["src/actions/Document-scan.tsx", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".js", ".jsx", "scrapper/index.js", "scr"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "migrations", "drizzle.config.ts", "ai"]
 }
