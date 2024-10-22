@@ -5,46 +5,88 @@ import { useEffect } from "react";
 import { Prediction } from "@/actions/DetectObjectApi";
 import { CameraIcon, FolderOpenIcon } from "@heroicons/react/20/solid";
 import FileUploadButton from "./FileUploadBtn";
-import ClassifierModels from "./ClassifierModels";
+import ClassifierModelCNN from "./ClassifierModelCNN";
 import { useTranslations } from "next-intl";
 import ThumnailSlideAuto from "./ThumnailSlideAuto";
 import ThumnailVideoSlide_Swiper from "./ThumnailVideoSlide_Swiper";
+import * as onnx from 'onnxjs';
+import { image } from "@tensorflow/tfjs";
+
 
 type Props = {
 }
 
 export function CameraCapture(props: Props) {
     const [image, setImage] = useState<string | null>(null);
+    const [video, setVideo] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const [predictions, setPredictions] = useState<Prediction[]>([]);
+    const [session, setSession] = useState<onnx.InferenceSession | null>(null);
     const c = useTranslations('CameraCapture');
+
+    useEffect(() => {
+        // Only load the ONNX model if we're on the client side
+        if (typeof window !== 'undefined') {
+            const loadModel = async () => {
+                const session = new onnx.InferenceSession();
+                try {
+                    // Make sure the model path is correct
+                    await session.loadModel('/yoloDetection-tjs/model.json');
+                    setSession(session);
+                } catch (error) {
+                    console.error("Failed to load ONNX model:", error);
+                }
+            };
+            loadModel();
+        }
+    }, [])
 
     // access camera and capture image from computer's camera
     const captureFromCamera = async () => {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-            const video = document.createElement("video");
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
+        if (typeof window !== 'undefined') {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = document.createElement("video");
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
 
-            if (ctx) {
-                video.srcObject = stream;
-                video.onloadedmetadata = () => {
-                    video.play();
-                    canvas.width = video.videoWidth;
-                    canvas.height = video.videoHeight;
-                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                    const image = canvas.toDataURL("image/jpeg");
-                    setImage(image);
-                    video.pause();
-                    video.srcObject = null;
-                    stream.getTracks().forEach((track) => track.stop());
-                };
+                if (ctx) {
+                    video.srcObject = stream;
+                    video.onloadedmetadata = () => {
+                        video.play();
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+
+                        const processFrame = () => {
+                            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                            // Preprocess the image data and run the model
+                            if (session) {
+                                const inputTensor = new onnx.Tensor(new Float32Array(imageData.data), 'float32', [1, 3, canvas.height, canvas.width]);
+                                session.run([inputTensor]).then((output) => {
+                                    const predictions = output.values().next().value.data;
+                                    setPredictions(predictions);
+                                });
+                            }
+
+                            requestAnimationFrame(processFrame);
+                        };
+
+                        processFrame();
+                        // ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        // const image = canvas.toDataURL("image/jpeg");
+                        // setImage(image);
+                        // video.pause();
+                        // video.srcObject = null;
+                        // stream.getTracks().forEach((track) => track.stop());
+                    };
+                }
+            } catch (error) {
+                console.error("Error accessing camera:", error);
             }
-        } catch (error) {
-            console.error("Error accessing camera:", error);
-        }
-    };
+        };
+    }
 
     // convert file to <img> tag
     const fileToImage = (file: File) => {
@@ -57,20 +99,23 @@ export function CameraCapture(props: Props) {
         });
     };
 
-    // call API with detectObjectApi, pass image as a params and store the result in Prediction, everything will be inside of useEffect
-    // useEffect(() => {
-    //     if (image) {
-    //         detectObjectApi(image)
-    //             .then((response: any) => {
-    //                 setPredictions(response.predictions);
-    //             })
-    //             .catch((error: any) => {
-    //                 console.error(error);
-    //             });
-    //     }
-    // }, [image]);
+    // Upload video file and convert it to <video> tag
+    const fileToVideo = (file: File): Promise<string> => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                if (event.target && event.target.result) {
+                    resolve(event.target.result as string);
+                } else {
+                    reject(new Error("Failed to read video file"));
+                }
+            };
+            reader.onerror = (error) => reject(error);
+            reader.readAsDataURL(file);
+        });
+    };
 
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMobile = typeof window !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     return (
         // Modify the input tag to both can upload images from phone's gallery and take a picture from camera
@@ -111,9 +156,17 @@ export function CameraCapture(props: Props) {
                                 }
                                 <FileUploadButton
                                     className={`${!isMobile ? "flex justify-center" : ""} bg-green-300 hover:bg-green-500`}
-                                    accept="image/*"
+                                    accept="image/*,video/*"
                                     isMobile={isMobile}
-                                    onUpload={(imgs: any) => fileToImage(imgs[0]).then((i: any) => setImage(i))}
+                                    // onUpload={(imgs: File[]) => fileToImage(imgs[0]).then((i: string) => setImage(i))}
+                                    onUpload={(files: File[]) => {
+                                        const file = files[0];
+                                        if (file.type.startsWith('image/')) {
+                                            fileToImage(file).then((i: string) => setImage(i));
+                                        } else if (file.type.startsWith('video/')) {
+                                            fileToVideo(file).then((v: string) => setVideo(v));
+                                        }
+                                    }}
                                 />
                             </div>
                         </div>
@@ -129,7 +182,13 @@ export function CameraCapture(props: Props) {
                         </div>
                     ))}
 
-                    {image && <ClassifierModels imgSrc={image} />}
+                    {image && <ClassifierModelCNN imgSrc={image} />}
+                    {video && (
+                        <video controls>
+                            <source src={video} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    )}
                 </>
             )}
         </div>
