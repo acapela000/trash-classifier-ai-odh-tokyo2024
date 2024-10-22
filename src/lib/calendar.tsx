@@ -71,8 +71,15 @@ export function GetTrashName(
 // START MOCK DATA
 // Icons per day
 const MockIconList: [string, TrashClassification[]][] = [
-  ['2024-10-6', [TrashClassification.PLASTIC, TrashClassification.PET]],
-  ['2024-10-7', [TrashClassification.GLASS]],
+  ['2024-08-31', [TrashClassification.CAN, TrashClassification.PET]],
+  ['2024-09-9', [TrashClassification.PLASTIC, TrashClassification.PET]],
+  ['2024-09-15', [TrashClassification.RAW_TRASH]],
+  ['2024-09-26', [TrashClassification.CARDBOARD]],
+  ['2024-09-30', [TrashClassification.GLASS, TrashClassification.PET]],
+  ['2024-10-18', [TrashClassification.CAN, TrashClassification.PLASTIC]],
+  ['2024-10-6', [TrashClassification.CAN, TrashClassification.PET]],
+
+  ['2024-10-7', [TrashClassification.CARDBOARD]],
   ['2024-10-20', [TrashClassification.CARDBOARD]],
   [
     '2024-10-30',
