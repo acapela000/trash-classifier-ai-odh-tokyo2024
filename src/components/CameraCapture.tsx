@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 import { Prediction } from '@/actions/DetectObjectApi';
 import { CameraIcon, FolderOpenIcon } from '@heroicons/react/20/solid';
 import FileUploadButton from './FileUploadBtn';
-import ClassifierModelCNN from './ClassifierModelCNN';
+//import ClassifierModelCNN from './ClassifierModelCNN';
+import ClassifierModelYOLO from './ClassifierModelYOLO';
 import { useTranslations } from 'next-intl';
 import ThumnailSlideAuto from './ThumnailSlideAuto';
 import ThumnailVideoSlide_Swiper from './ThumnailVideoSlide_Swiper';
@@ -25,11 +26,19 @@ export function CameraCapture(props: Props) {
   useEffect(() => {
     // Only load the ONNX model if we're on the client side
     if (typeof window !== 'undefined') {
+      /**
+       * Loads the ONNX model for object detection. This function is
+       * called once when the component mounts, and it will be called
+       * again if the component is re-rendered.
+       *
+       * @returns {Promise<void>}
+       */
       const loadModel = async () => {
         const session = new onnx.InferenceSession();
         try {
           // Make sure the model path is correct
           await session.loadModel('/yoloDetection-tjs/model.json');
+          // await session.loadModel('/onnx/best.onnx');
           setSession(session);
         } catch (error) {
           console.error('Failed to load ONNX model:', error);
@@ -52,6 +61,18 @@ export function CameraCapture(props: Props) {
 
         if (ctx) {
           video.srcObject = stream;
+          /**
+           * Event handler for when the video metadata has loaded.
+           * This function starts video playback, sets the canvas dimensions to match the video,
+           * and processes video frames to capture image data. The captured image data is then
+           * preprocessed and passed to the ONNX model for predictions. The predictions are
+           * updated in the component's state. The frame processing is done recursively via
+           * requestAnimationFrame to continuously process the video stream.
+           * @function
+           * @param {MediaStreamEvent} event - The event object passed from the video element's
+           *                                    loadedmetadata event.
+           * @returns {void}
+           */
           video.onloadedmetadata = () => {
             video.play();
             canvas.width = video.videoWidth;
@@ -196,7 +217,7 @@ export function CameraCapture(props: Props) {
             </div>
           ))}
 
-          {image && <ClassifierModelCNN imgSrc={image} />}
+          {image && <ClassifierModelYOLO imgSrc={image} />}
           {video && (
             <video controls>
               <source src={video} type='video/mp4' />
